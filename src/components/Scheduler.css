@@ -1,0 +1,96 @@
+/* src/App.css */
+.calendar-scheduler {
+  display: flex;
+  width: 600px;
+  height: 280px;
+  border: 1px solid #ccc;
+  overflow-y: auto;
+  border-radius: 5px;
+  margin: 5px;
+}
+
+.time-column {
+  width: 300px;
+  /* display: flex; */
+  flex-direction: column;
+}
+
+.time-slot {
+  /* flex: 1; */
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  border-bottom: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+  height: 50px;
+}
+
+.timeslot-legend {
+  margin: 0;
+}
+
+.timeslot-fieldset {
+  /* border: 1px groove #ddd !important; */
+  padding: 18px 23px 23px 23px !important;
+  border: none;
+  margin: 0px;
+  font-size: 13px !important;
+}
+
+.events-column {
+  position: relative;
+  flex: 0 0 500px; /* Fixed width for time column */
+  /* border-right: 1px solid #ccc; */
+  /* display: flex; */
+  flex-direction: column;
+}
+
+.event {
+  position: absolute;
+  width: 100%;
+  background-color: #3498db;
+  /* background-color: #8ccaf4; */
+  color: #fff;
+  padding: 5px;
+  cursor: pointer;
+  border-radius: 10px;
+  border-color: black;
+  border-style: dashed;
+}
+
+.event-slot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid #ccc;
+  height: 25px;
+}
+
+.current-time-cursor {
+  position: absolute;
+  left: 0px; /* Adjust left position to align with the time slots column */
+  right: 0;
+  top: 0;
+  height: 2px;
+  background-color: #e74c3c;
+}
+
+.current-time-cursor::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: -3px;
+  width: 8px;
+  height: 8px;
+  background-color: #e74c3c;
+  border-radius: 50%;
+}
+
+.calendar-scheduler::-webkit-scrollbar {
+  width: 10px; /* width of the entire scrollbar */
+}
+
+.calendar-scheduler::-webkit-scrollbar-thumb {
+  background-color: #d1d1d1; /* color of the scroll thumb */
+  border-radius: 10px; /* roundness of the scroll thumb */
+}
