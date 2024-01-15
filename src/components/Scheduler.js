@@ -39,11 +39,16 @@ const orders = [
   // },
 ];
 
-const Scheduler = () => {
+/*
+30 min slot == 25 px
+60 min slot == 50 px
+1 min == 0.83 px
+*/
+const Scheduler = ({ selectedKeys, setSelectedKeys }) => {
   const timeSlots = Array.from({ length: 24 }, (_, index) => index + 1); // 24 hours
   const eventSlots = Array.from({ length: 48 }, (_, index) => index + 1); // 24 hours, 1 hour as two slots
   const [currentTime, setCurrentTime] = useState(new Date());
-  const [selectedKeys, setSelectedKeys] = useState(new Set());
+  //const [selectedKeys, setSelectedKeys] = useState(new Set());
 
   useEffect(() => {
     // Update current time every minute

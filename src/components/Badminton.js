@@ -4,9 +4,12 @@ import { useNavigate } from "react-router-dom";
 import { Outlet } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Scheduler from "./Scheduler";
+import BookingPanel from "./BookingPanel";
+import "./Badminton.css";
 
 const Badminton = () => {
   const navigate = useNavigate();
+  const [selectedSlots, setSelectedSlots] = useState(new Set());
 
   useEffect(() => {
     // Update the document title using the browser API
@@ -21,9 +24,14 @@ const Badminton = () => {
   return (
     <>
       <div>Hello Badminton</div>
-      <Scheduler></Scheduler>
+      <div className="badminton-body1">
+        <Scheduler
+          selectedKeys={selectedSlots}
+          setSelectedKeys={setSelectedSlots}
+        ></Scheduler>
+        <BookingPanel selectedKeys={selectedSlots}></BookingPanel>
+      </div>
       <Button onClick={onClick}>Go back</Button>
-      {/* <Outlet /> */}
     </>
   );
 };

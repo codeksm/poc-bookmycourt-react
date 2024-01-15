@@ -2,7 +2,7 @@
 .calendar-scheduler {
   display: flex;
   width: 600px;
-  height: 280px;
+  height: 330px;
   border: 1px solid #ccc;
   overflow-y: auto;
   border-radius: 5px;
@@ -80,7 +80,7 @@
   border-style: groove;
   border-width: 1px;
   text-align: center;
-  font-family: "Times New Roman", Times, serif;
+  /* font-family: "Times New Roman", Times, serif; */
 }
 
 .event-slot-reserved {
@@ -112,7 +112,7 @@
   border-width: 1px;
   text-align: center;
   /* justify-content: center; */
-  font-family: "Times New Roman", Times, serif;
+  /* font-family: "Times New Roman", Times, serif; */
 }
 
 .current-time-cursor {
