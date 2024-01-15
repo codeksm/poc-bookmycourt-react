@@ -2,7 +2,6 @@ import React from "react";
 import PgDashboard from "./pgdashboard/pgDashboard";
 import { Routes, Route } from "react-router-dom";
 import Badminton from "./components/Badminton";
-//import "antd/dist/antd.css";
 
 import {
   LaptopOutlined,

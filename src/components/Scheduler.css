@@ -67,6 +67,54 @@
   height: 25px;
 }
 
+.event-slot-booked {
+  position: absolute;
+  width: 100%;
+  background-color: rgba(159, 156, 154, 0.735);
+  /* background-color: #8ccaf4; */
+  color: #fff;
+  padding: 5px;
+  cursor: pointer;
+  border-radius: 2px;
+  /* border-color: black; */
+  border-style: groove;
+  border-width: 1px;
+  text-align: center;
+  font-family: "Times New Roman", Times, serif;
+}
+
+.event-slot-reserved {
+  position: absolute;
+  width: 100%;
+  background-color: rgb(52, 176, 234);
+  /* background-color: #8ccaf4; */
+  color: white;
+  padding: 5px;
+  cursor: pointer;
+  border-radius: 2px;
+  /* border-color: black; */
+  border-style: groove;
+  border-width: 1px;
+  text-align: center;
+  font-family: "Times New Roman", Times, serif;
+}
+
+.event-slot-available {
+  position: absolute;
+  width: 100%;
+  background-color: none;
+  color: black;
+  padding: 5px;
+  cursor: pointer;
+  border-radius: 2px;
+  /* border-color: black; */
+  border-style: groove;
+  border-width: 1px;
+  text-align: center;
+  /* justify-content: center; */
+  font-family: "Times New Roman", Times, serif;
+}
+
 .current-time-cursor {
   position: absolute;
   left: 0px; /* Adjust left position to align with the time slots column */
