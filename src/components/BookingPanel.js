@@ -2,12 +2,17 @@ import { Button } from "antd";
 import React from "react";
 import { useState, useEffect } from "react";
 import "./BookingPanel.css";
+import { TIME_SLOT_MAP } from "../data/hours";
 
 const BookingPanel = ({ selectedKeys }) => {
+  const [slots, setSlots] = useState([]);
   useEffect(() => {
-    // Update the document title using the browser API
+    // sort selected slot numbers
     console.log("I am in booking panel");
-  });
+    if (selectedKeys != undefined) {
+      setSlots(Array.from(selectedKeys).sort((a, b) => a - b));
+    }
+  }, [selectedKeys]);
 
   const onClick = () => {
     //setSelectedCard(card);
@@ -18,12 +23,18 @@ const BookingPanel = ({ selectedKeys }) => {
     <div className="bookingpanel-body">
       <fieldset>
         <legend>From</legend>
-        <div className="bookingpanel-from">10:30 AM</div>
+        {slots.length > 0 && (
+          <div className="bookingpanel-from">{TIME_SLOT_MAP.get(slots[0])}</div>
+        )}
       </fieldset>
 
       <fieldset>
         <legend>To</legend>
-        <div className="bookingpanel-to">12:00 PM</div>
+        {slots.length > 0 && (
+          <div className="bookingpanel-to">
+            {TIME_SLOT_MAP.get(slots[slots.length - 1])}
+          </div>
+        )}
       </fieldset>
 
       <fieldset>

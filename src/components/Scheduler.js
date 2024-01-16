@@ -59,6 +59,7 @@ const Scheduler = ({ selectedKeys, setSelectedKeys }) => {
     }, 10000);
 
     return () => clearInterval(intervalId);
+    console.log("Hello from shceduler");
   }, [currentTime]);
 
   const handleEventClick = (eventSlotKey) => {
