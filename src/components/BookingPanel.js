@@ -22,6 +22,11 @@ const BookingPanel = ({ selectedKeys }) => {
   return (
     <div className="bookingpanel-body">
       <fieldset>
+        <legend>Sport</legend>
+        <div className="bookingpanel-sport">Badminton</div>
+      </fieldset>
+
+      <fieldset>
         <legend>From</legend>
         {slots.length > 0 && (
           <div className="bookingpanel-from">{TIME_SLOT_MAP.get(slots[0])}</div>
@@ -48,8 +53,13 @@ const BookingPanel = ({ selectedKeys }) => {
       </fieldset>
 
       <fieldset>
-        <legend>Sport</legend>
-        <div className="bookingpanel-sport">Badminton</div>
+        <legend>Total Amount</legend>
+        <div className="bookingpanel-amount">400.00</div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Note</legend>
+        <div className="bookingpanel-note"></div>
       </fieldset>
 
       <Button onClick={onClick}>Reserve Slot</Button>

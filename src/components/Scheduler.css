@@ -1,12 +1,12 @@
 /* src/App.css */
 .calendar-scheduler {
   display: flex;
-  width: 600px;
-  height: 330px;
+  top: 0;
+  bottom: 0;
   border: 1px solid #ccc;
   overflow-y: auto;
+  max-height: 330px;
   border-radius: 5px;
-  margin: 5px;
 }
 
 .time-column {
