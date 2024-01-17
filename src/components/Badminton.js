@@ -5,6 +5,7 @@ import { Outlet } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Scheduler from "./Scheduler";
 import BookingPanel from "./BookingPanel";
+import { Carousel } from "antd";
 import "./Badminton.css";
 import { Tabs } from "antd";
 
@@ -27,7 +28,21 @@ const Badminton = () => {
 
   return (
     <>
-      <div>Hello Badminton</div>
+      <div className="carousel-container">
+        <Carousel autoplay>
+          <div className="carousel-item">
+            {" "}
+            {/* Customize the styles for each carousel item */}
+            <img src="https://placekitten.com/800/400" alt="Carousel 1" />
+          </div>
+          <div className="carousel-item">
+            <img src="https://placekitten.com/800/401" alt="Carousel 2" />
+          </div>
+          <div className="carousel-item">
+            <img src="https://placekitten.com/800/402" alt="Carousel 3" />
+          </div>
+        </Carousel>
+      </div>
       <div className="badminton">
         <div className="badminton-courts">
           <Tabs defaultActiveKey="1" centered>
