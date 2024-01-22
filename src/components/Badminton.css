@@ -3,12 +3,47 @@
 }
 
 .carousel-container {
-  max-width: 1200px; /* Adjust the width as needed */
+  width: 1200px; /* Adjust the width as needed */
+  height: 350px;
   margin: 0 auto;
   padding: 0px;
   border-radius: 5px;
   margin: 5px;
 }
+
+.react-3d-carousel {
+  /* width: 1400px; */
+  max-width: 1160px !important;
+  border-radius: 10px 10px 10px 10px;
+  /* background-color: #c4922e; */
+}
+
+.slider-container {
+  border-radius: 10px 10px 10px 10px;
+  /* background-color: #1f1e1c; */
+  width: 1160px !important;
+  height: 300px !important;
+  margin: 0px auto 0px -50% !important;
+}
+
+.slider-content {
+  left: 50% !important;
+  width: 80% !important;
+}
+
+.slider-single-content {
+  width: 100% !important;
+  height: 300px;
+}
+
+.slider-single-content > img {
+  width: 100%;
+  height: 100%;
+}
+
+/* .carousel-container.react-3d-carousel.slider-container.slider-content {
+  width: 10%;
+} */
 
 .carousel-item {
   display: flex;
@@ -113,6 +148,12 @@
   max-width: 350px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 4px;
+  /* z-index: -10; */
+}
+
+.ant-popover-content,
+.ant-popover {
+  z-index: 0 !important;
 }
 
 .ant-fullcalendar {

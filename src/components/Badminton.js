@@ -4,11 +4,12 @@ import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Scheduler from "./Scheduler";
 import BookingPanel from "./BookingPanel";
-import { Carousel, Calendar, Popover } from "antd";
+import { Calendar, Popover } from "antd";
 import "./Badminton.css";
 import dayjs from "dayjs";
-import { Tabs, DatePicker } from "antd";
+import { Tabs, Modal } from "antd";
 import { CalendarOutlined } from "@ant-design/icons";
+import { Carousel } from "3d-react-carousal";
 
 const { TabPane } = Tabs;
 
@@ -18,6 +19,14 @@ const Badminton = () => {
   const [visible, setVisible] = useState(false);
   const [selectedDate, setSelectedDate] = useState(dayjs());
   const tabData = [1, 2, 3, 4, 5];
+
+  let slides = [
+    <img src="https://picsum.photos/800/300/?random" alt="1" />,
+    <img src="https://picsum.photos/800/301/?random" alt="2" />,
+    <img src="https://picsum.photos/800/302/?random" alt="3" />,
+    <img src="https://picsum.photos/800/303/?random" alt="4" />,
+    <img src="https://picsum.photos/800/304/?random" alt="5" />,
+  ];
 
   useEffect(() => {
     // Update the document title using the browser API
@@ -41,6 +50,10 @@ const Badminton = () => {
     setVisible(false);
   };
 
+  const callback = function (index) {
+    console.log("callback", index);
+  };
+
   const content = (
     <Calendar
       className="calendar"
@@ -53,19 +66,14 @@ const Badminton = () => {
   return (
     <>
       <div className="carousel-container">
-        <Carousel autoplay>
-          <div className="carousel-item">
-            {" "}
-            {/* Customize the styles for each carousel item */}
-            <img src="https://placekitten.com/800/400" alt="Carousel 1" />
-          </div>
-          <div className="carousel-item">
-            <img src="https://placekitten.com/800/401" alt="Carousel 2" />
-          </div>
-          <div className="carousel-item">
-            <img src="https://placekitten.com/800/402" alt="Carousel 3" />
-          </div>
-        </Carousel>
+        <Carousel
+          className="carousel-item"
+          slides={slides}
+          autoplay={false}
+          arrows={true}
+          interval={4000}
+          onSlideChange={callback}
+        />
       </div>
 
       <div className="badminton">
@@ -73,6 +81,7 @@ const Badminton = () => {
           <div className="badminton-courts-tab-header">
             <Popover
               content={content}
+              className="cal-popover"
               title={
                 selectedDate ? selectedDate.format("MMMM YYYY") : "Select Date"
               }
