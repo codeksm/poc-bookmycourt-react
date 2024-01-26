@@ -62,11 +62,11 @@
 
 .badminton-courts-tab-header {
   max-width: 630px; /* Adjust the width as needed */
-  height: 35px;
+  height: 125px;
   margin: 0px;
   padding: 0px;
   border-radius: 10px 10px 0px 0px;
-  background-color: #f1d39b;
+  background-color: none;
 }
 
 .badminton-courts {

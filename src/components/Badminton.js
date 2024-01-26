@@ -10,6 +10,8 @@ import dayjs from "dayjs";
 import { Tabs, Modal } from "antd";
 import { CalendarOutlined } from "@ant-design/icons";
 import { Carousel } from "3d-react-carousal";
+import { WEEK_DAYS } from "../data/hours";
+import CustomCalendar from "./CustomCalendar";
 
 const { TabPane } = Tabs;
 
@@ -19,6 +21,7 @@ const Badminton = () => {
   const [visible, setVisible] = useState(false);
   const [selectedDate, setSelectedDate] = useState(dayjs());
   const tabData = [1, 2, 3, 4, 5];
+  // const [currentDate, setCurrentDate] = useState(new Date());
 
   let slides = [
     <img src="https://picsum.photos/800/300/?random" alt="1" />,
@@ -44,24 +47,9 @@ const Badminton = () => {
     setVisible(false);
   };
 
-  const handleDateClick = (value) => {
-    setSelectedDate(value);
-    console.log("Date " + value);
-    setVisible(false);
-  };
-
   const callback = function (index) {
     console.log("callback", index);
   };
-
-  const content = (
-    <Calendar
-      className="calendar"
-      value={selectedDate}
-      fullscreen={false}
-      onChange={handleDateClick}
-    />
-  );
 
   return (
     <>
@@ -79,25 +67,7 @@ const Badminton = () => {
       <div className="badminton">
         <div className="badminton-courts">
           <div className="badminton-courts-tab-header">
-            <Popover
-              content={content}
-              className="cal-popover"
-              title={
-                selectedDate ? selectedDate.format("MMMM YYYY") : "Select Date"
-              }
-              trigger="click"
-              open={visible}
-              onOpenChange={setVisible}
-            >
-              <span className="date-month" onClick={() => setVisible(!visible)}>
-                {selectedDate
-                  ? selectedDate.format("DD MMMM YYYY")
-                  : "Select Date"}
-              </span>
-              <span className="date-today" onClick={() => setToday()}>
-                Today
-              </span>
-            </Popover>
+            <CustomCalendar />
           </div>
           <Tabs defaultActiveKey="1" centered>
             {tabData.map((tab, index) => (
