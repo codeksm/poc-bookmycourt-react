@@ -43,6 +43,7 @@
   margin-left: 10px;
   cursor: pointer;
   box-shadow: #292626;
+  margin-top: 5px;
 }
 
 .date-header {
@@ -51,14 +52,56 @@
 }
 
 /* Add hover effect if you want the rotation only on hover */
-.date-header:hover {
+/* .date-header:hover {
   transform: rotateY(360deg);
   transition: transform 1000ms ease;
   box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.1);
+} */
+
+.date-header-clicked {
+  animation: wiggle 2s linear;
+  animation-duration: 1.5s;
+  width: 60px;
+  height: 60px;
+  border-radius: 10%;
+  background-color: #3498db;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10px;
+  margin-left: 10px;
+  cursor: pointer;
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.2);
+  /* Add other styles for the clicked state */
 }
 
-.date-header:active {
-  box-shadow: inset 0 0 0 4px #043b3f6b;
+/* Keyframes */
+@keyframes wiggle {
+  0%,
+  7% {
+    transform: rotateZ(0);
+  }
+  15% {
+    transform: rotateZ(-15deg);
+  }
+  20% {
+    transform: rotateZ(30deg);
+  }
+  25% {
+    transform: rotateZ(-10deg);
+  }
+  30% {
+    transform: rotateZ(6deg);
+  }
+  35% {
+    transform: rotateZ(-4deg);
+  }
+  40%,
+  100% {
+    transform: rotateZ(0);
+  }
 }
 
 .date-number {

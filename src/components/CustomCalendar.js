@@ -29,7 +29,12 @@ const CustomCalendar = () => {
       headers.push(
         <div
           key={i}
-          className="date-header"
+          // className="date-header"
+          className={` ${
+            displayDate.date() === tempDate.date()
+              ? "date-header-clicked"
+              : "date-header"
+          }`}
           onClick={() => setDisplayDate(tempDate)}
         >
           <span className="date-number">{tempDate.format("DD")}</span>

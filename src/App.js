@@ -59,7 +59,7 @@ const App = () => {
       <Layout>
         <Layout
           style={{
-            padding: "0 24px 24px",
+            padding: "0 0 0",
           }}
         >
           {/* <Breadcrumb

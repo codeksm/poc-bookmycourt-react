@@ -70,17 +70,13 @@
 .event-slot-booked {
   position: absolute;
   width: 100%;
-  background-color: rgba(159, 156, 154, 0.735);
+  background-color: rgb(52, 176, 234);
   /* background-color: #8ccaf4; */
   color: #fff;
   padding: 5px;
   cursor: pointer;
-  border-radius: 2px;
-  /* border-color: black; */
-  border-style: groove;
-  border-width: 1px;
   text-align: center;
-  /* font-family: "Times New Roman", Times, serif; */
+  font-family: "Times New Roman", Times, serif;
 }
 
 .event-slot-reserved {
@@ -91,10 +87,6 @@
   color: white;
   padding: 5px;
   cursor: pointer;
-  border-radius: 2px;
-  /* border-color: black; */
-  border-style: groove;
-  border-width: 1px;
   text-align: center;
   font-family: "Times New Roman", Times, serif;
 }
@@ -112,7 +104,7 @@
   border-width: 1px;
   text-align: center;
   /* justify-content: center; */
-  /* font-family: "Times New Roman", Times, serif; */
+  font-family: "Times New Roman", Times, serif;
 }
 
 .current-time-cursor {
