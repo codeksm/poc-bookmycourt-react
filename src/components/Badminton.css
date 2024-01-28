@@ -2,62 +2,50 @@
   display: flex;
 }
 
+.backbutton {
+  margin: 0;
+  position: absolute;
+}
+
 .carousel-container {
   width: 1200px; /* Adjust the width as needed */
   height: 350px;
-  margin: 0 auto;
+  margin: 0;
   padding: 0px;
   border-radius: 5px;
   margin: 5px;
 }
 
-.react-3d-carousel {
-  /* width: 1400px; */
-  max-width: 1160px !important;
-  border-radius: 10px 10px 10px 10px;
-  /* background-color: #c4922e; */
+.css-1fzpoyk:nth-of-type(1) {
+  transform: translateY(-50%) translateX(-50%) scale(0.7) !important;
 }
 
-.slider-container {
-  border-radius: 10px 10px 10px 10px;
-  /* background-color: #1f1e1c; */
-  width: 1160px !important;
-  height: 300px !important;
-  margin: 0px auto 0px -50% !important;
+.css-1fzpoyk:nth-of-type(3) {
+  left: 75% !important;
+  transform: translateY(-50%) translateX(-50%) scale(0.7) !important;
 }
 
-.slider-content {
-  left: 50% !important;
-  width: 80% !important;
+.css-1fzpoyk:nth-of-type(3) img {
+  height: 400px !important;
+  object-fit: cover;
 }
 
-.slider-single-content {
-  width: 100% !important;
-  height: 300px;
+.css-1fzpoyk:nth-of-type(1) img {
+  height: 400px !important;
+  object-fit: cover;
 }
 
-.slider-single-content > img {
-  width: 100%;
-  height: 100%;
+.css-1qzevvg {
+  margin: 1px 500px 0px !important;
+  height: 10px !important;
+  padding: 0px;
+  top: -15px;
+  z-index: 10;
 }
 
-/* .carousel-container.react-3d-carousel.slider-container.slider-content {
-  width: 10%;
-} */
-
-.carousel-item {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 300px; /* Adjust the height as needed */
-  background-color: #eee; /* Set a background color */
-}
-
-.carousel-item img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* Ensure the image covers the entire container */
+.css-1qzevvg img {
+  /* margin: 0px !important; */
+  margin: 0 !important;
 }
 
 .badminton-courts-tab-header {
