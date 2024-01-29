@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import "./BookingPanel.css";
 import { TIME_SLOT_MAP } from "../data/hours";
 
-const BookingPanel = ({ selectedKeys }) => {
+const BookingPanel = ({ selectedKeys, selectedCourt }) => {
   const [slots, setSlots] = useState([]);
   useEffect(() => {
     // sort selected slot numbers
@@ -44,7 +44,9 @@ const BookingPanel = ({ selectedKeys }) => {
 
       <fieldset>
         <legend>Court</legend>
-        <div className="bookingpanel-court">Court 1</div>
+        {selectedCourt.length > 0 && (
+          <div className="bookingpanel-court">{selectedCourt.join(", ")}</div>
+        )}
       </fieldset>
 
       <fieldset>

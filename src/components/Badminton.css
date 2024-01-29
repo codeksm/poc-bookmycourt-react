@@ -5,6 +5,7 @@
 .backbutton {
   margin: 0;
   position: absolute;
+  z-index: 10;
 }
 
 .carousel-container {
@@ -176,4 +177,9 @@
 
 .ant-fullcalendar-footer-extra {
   color: #f5222d;
+}
+
+.panel2 {
+  max-width: 350px;
+  margin-left: 30px;
 }

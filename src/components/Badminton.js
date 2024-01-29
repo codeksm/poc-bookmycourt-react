@@ -11,6 +11,7 @@ import { Tabs } from "antd";
 import Carousel from "react-spring-3d-carousel";
 import CustomCalendar from "./CustomCalendar";
 import { v4 as uuidv4 } from "uuid";
+import CourtSelection from "./CourtSelection";
 
 const { TabPane } = Tabs;
 uuidv4();
@@ -20,6 +21,7 @@ const Badminton = () => {
   const [selectedSlots, setSelectedSlots] = useState(new Set());
   const [visible, setVisible] = useState(false);
   const [selectedDate, setSelectedDate] = useState(dayjs());
+  const [selectedCourt, setSelectedCourt] = useState([]);
   const tabData = [1, 2, 3, 4, 5];
   // const [currentDate, setCurrentDate] = useState(new Date());
 
@@ -110,7 +112,13 @@ const Badminton = () => {
           </Tabs>
         </div>
 
-        <BookingPanel selectedKeys={selectedSlots}></BookingPanel>
+        <div className="panel2">
+          <CourtSelection setSelectedCourt={setSelectedCourt} />
+          <BookingPanel
+            selectedKeys={selectedSlots}
+            selectedCourt={selectedCourt}
+          ></BookingPanel>
+        </div>
       </div>
     </>
   );

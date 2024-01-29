@@ -21,9 +21,9 @@
   width: 100%;
 }
 
-/* .bookingpanel-body legend {
-  font-weight: bold;
-} */
+.bookingpanel-body legend {
+  font-size: medium;
+}
 
 .bookingpanel-body > fieldset > div {
   /* margin-top: 1px;
