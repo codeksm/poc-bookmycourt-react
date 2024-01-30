@@ -21,8 +21,9 @@ const Badminton = () => {
   const [selectedSlots, setSelectedSlots] = useState(new Set());
   const [visible, setVisible] = useState(false);
   const [selectedDate, setSelectedDate] = useState(dayjs());
-  const [selectedCourt, setSelectedCourt] = useState([]);
-  const tabData = [1, 2, 3, 4, 5];
+  const [selectedCourt, setSelectedCourt] = useState(["1"]);
+  const [currentCourt, setCurrentCourt] = useState("1");
+  const availableCourts = ["1", "2", "3", "4", "5"];
   // const [currentDate, setCurrentDate] = useState(new Date());
 
   // let slides = [
@@ -72,6 +73,12 @@ const Badminton = () => {
     console.log("callback", index);
   };
 
+  const onCourtChange = (key) => {
+    setCurrentCourt(key);
+    setSelectedCourt([key]);
+    console.log(key);
+  };
+
   return (
     <>
       <Button className="backbutton" onClick={onClick}>
@@ -100,9 +107,9 @@ const Badminton = () => {
           <div className="badminton-courts-tab-header">
             <CustomCalendar />
           </div>
-          <Tabs defaultActiveKey="1" centered>
-            {tabData.map((tab, index) => (
-              <TabPane tab={`Court ${index + 1}`} key={index + 1}>
+          <Tabs defaultActiveKey="1" centered onChange={onCourtChange}>
+            {availableCourts.map((tab, index) => (
+              <TabPane tab={`Court ${index + 1}`} key={tab}>
                 <Scheduler
                   selectedKeys={selectedSlots}
                   setSelectedKeys={setSelectedSlots}
@@ -113,7 +120,11 @@ const Badminton = () => {
         </div>
 
         <div className="panel2">
-          <CourtSelection setSelectedCourt={setSelectedCourt} />
+          <CourtSelection
+            courts={availableCourts}
+            currentCourt={currentCourt}
+            setSelectedCourt={setSelectedCourt}
+          />
           <BookingPanel
             selectedKeys={selectedSlots}
             selectedCourt={selectedCourt}

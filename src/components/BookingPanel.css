@@ -1,16 +1,15 @@
 .bookingpanel-body {
   width: 350px;
   height: 380px;
-  background-color: #f5f5f5;
+  background-color: #f8f8f8;
   border: 1px solid #ccc;
   border-radius: 8px;
   padding: 20px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  margin: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 5px;
+  margin-top: 25px;
 }
 
 .bookingpanel-body fieldset {
@@ -21,8 +20,13 @@
   width: 100%;
 }
 
+.bookingpanel-body fieldset:hover {
+  border-color: rgb(87, 159, 231);
+}
+
 .bookingpanel-body legend {
   font-size: medium;
+  margin: 0;
 }
 
 .bookingpanel-body > fieldset > div {
@@ -33,6 +37,7 @@
   border-radius: 5px; */
   font-size: small;
   margin-left: 10px;
+  float: right;
   /* text-align: center; */
 }
 

@@ -3,20 +3,21 @@ import { Select, Checkbox, Row, Col } from "antd";
 import "antd/dist/reset.css";
 import "./CourtSelection.css"; // Import the CSS file for styling
 
-const courts = ["court1", "court2", "court3"];
-
-const CourtSelection = ({ setSelectedCourt }) => {
+const CourtSelection = ({ courts, currentCourt, setSelectedCourt }) => {
   const options = [];
-  for (let i = 10; i < 26; i++) {
-    options.push({
-      label: i.toString(36) + i,
-      value: i.toString(36) + i,
-    });
+  for (let i = 0; i < courts.length; i++) {
+    if (courts[i] !== currentCourt) {
+      options.push({
+        label: "Court " + courts[i],
+        value: courts[i],
+      });
+    }
   }
 
   const handleCourtChange = (value) => {
+    let updatedValue = [...value, currentCourt];
     console.log(`selected ${value}`);
-    setSelectedCourt(value);
+    setSelectedCourt(updatedValue);
   };
 
   return (
@@ -26,9 +27,10 @@ const CourtSelection = ({ setSelectedCourt }) => {
         allowClear
         style={{
           width: "100%",
+          height: 40,
         }}
-        placeholder="Please select"
-        defaultValue={["a10", "c12"]}
+        placeholder="Add more courts ?"
+        defaultValue={[]}
         onChange={handleCourtChange}
         options={options}
       />
