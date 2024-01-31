@@ -24,6 +24,8 @@ const Badminton = () => {
   const [selectedCourt, setSelectedCourt] = useState(["1"]);
   const [currentCourt, setCurrentCourt] = useState("1");
   const availableCourts = ["1", "2", "3", "4", "5"];
+  const booked = [5, 6, 7, 16, 17, 18, 19];
+  const reserved = [9, 10, 22, 23];
   // const [currentDate, setCurrentDate] = useState(new Date());
 
   // let slides = [
@@ -79,6 +81,26 @@ const Badminton = () => {
     console.log(key);
   };
 
+  const fillSlots = () => {
+    const sortedArray = Array.from(selectedSlots).sort();
+
+    if (sortedArray.length === 2) {
+      const startSlot = sortedArray[0];
+      const endSlot = sortedArray[1];
+      console.log("Range start " + startSlot + ", end " + endSlot);
+
+      for (let slotKey = startSlot + 1; slotKey < endSlot; slotKey++) {
+        if (!booked.includes(slotKey) && !reserved.includes(slotKey)) {
+          setSelectedSlots((prevSlots) => new Set([...prevSlots, slotKey]));
+        }
+      }
+    }
+  };
+
+  const clearSlots = () => {
+    setSelectedSlots(new Set());
+  };
+
   return (
     <>
       <Button className="backbutton" onClick={onClick}>
@@ -111,6 +133,8 @@ const Badminton = () => {
             {availableCourts.map((tab, index) => (
               <TabPane tab={`Court ${index + 1}`} key={tab}>
                 <Scheduler
+                  booked={booked}
+                  reserved={reserved}
                   selectedKeys={selectedSlots}
                   setSelectedKeys={setSelectedSlots}
                 ></Scheduler>
@@ -125,6 +149,20 @@ const Badminton = () => {
             currentCourt={currentCourt}
             setSelectedCourt={setSelectedCourt}
           />
+          <div className="options-button">
+            <Button
+              className="options-button-fill"
+              onClick={() => fillSlots(1)}
+            >
+              Fill Slots
+            </Button>
+            <Button
+              className="options-button-clear"
+              onClick={() => clearSlots(1)}
+            >
+              Clear Slots
+            </Button>
+          </div>
           <BookingPanel
             selectedKeys={selectedSlots}
             selectedCourt={selectedCourt}

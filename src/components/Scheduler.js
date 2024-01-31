@@ -4,8 +4,6 @@ import { useEffect, useState } from "react";
 import "./Scheduler.css";
 import { HOURS_MAP, TIME_SLOT_MAP } from "../data/hours";
 
-const booked = [5, 6, 7, 16, 17, 18, 19];
-const reserved = [9, 10, 22, 23];
 const orders = [
   // {
   //   id: 1,
@@ -44,7 +42,7 @@ const orders = [
 60 min slot == 50 px
 1 min == 0.83 px
 */
-const Scheduler = ({ selectedKeys, setSelectedKeys }) => {
+const Scheduler = ({ booked, reserved, selectedKeys, setSelectedKeys }) => {
   const timeSlots = Array.from({ length: 24 }, (_, index) => index + 1); // 24 hours
   const eventSlots = Array.from({ length: 48 }, (_, index) => index + 1); // 24 hours, 1 hour as two slots
   const [currentTime, setCurrentTime] = useState(new Date());
