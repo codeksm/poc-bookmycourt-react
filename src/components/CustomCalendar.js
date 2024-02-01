@@ -6,9 +6,9 @@ import dayjs from "dayjs";
 import "./CustomCalendar.css";
 import { LeftOutlined, RightOutlined } from "@ant-design/icons";
 
-const CustomCalendar = () => {
+const CustomCalendar = ({ displayDate, setDisplayDate }) => {
   const [currentDate, setCurrentDate] = useState(dayjs());
-  const [displayDate, setDisplayDate] = useState(dayjs());
+  // const [displayDate, setDisplayDate] = useState(dayjs());
 
   const changeDate = (amount) => {
     let newDate = dayjs(currentDate).add(amount, "day");

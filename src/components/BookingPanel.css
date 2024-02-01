@@ -55,3 +55,87 @@ button {
 button:hover {
   background-color: none;
 }
+
+.bookingpanel-sport,
+.bookingpanel-date,
+.bookingpanel-from,
+.bookingpanel-to,
+.bookingpanel-court,
+.bookingpanel-cost {
+  height: 40px;
+  width: 95%;
+  padding: 10px;
+  background-color: white;
+  margin-top: 10px;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.bookingpanel-sport.fade-out,
+.bookingpanel-date.fade-out,
+.bookingpanel-court.fade-out,
+.bookingpanel-from.fade-out,
+.bookingpanel-to.fade-out,
+.bookingpanel-cost.fade-out {
+  animation: fadeEffect 1s both;
+}
+
+.bookingpanel-court.fade-in {
+  animation: fadeEffect1 1s both;
+}
+
+.bookingpanel-date.fade-in {
+  animation: fadeEffect1 1s both;
+}
+
+.bookingpanel-from.fade-in {
+  animation: fadeEffect1 1s both;
+}
+
+.bookingpanel-to.fade-in {
+  animation: fadeEffect1 1s both;
+}
+
+@keyframes fadeEffect1 {
+  0% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 0.5;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeEffect {
+  0% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 0.5;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.bookingpanel-left {
+  float: left;
+}
+
+.bookingpanel-right {
+  float: right;
+}
+
+.reserve-slot {
+  height: 30px;
+  width: 95%;
+}
+.reserve-slot-btn {
+  width: 100%;
+  margin-top: 10px;
+}

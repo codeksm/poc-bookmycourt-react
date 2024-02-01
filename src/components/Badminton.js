@@ -19,22 +19,12 @@ uuidv4();
 const Badminton = () => {
   const navigate = useNavigate();
   const [selectedSlots, setSelectedSlots] = useState(new Set());
-  const [visible, setVisible] = useState(false);
-  const [selectedDate, setSelectedDate] = useState(dayjs());
   const [selectedCourt, setSelectedCourt] = useState(["1"]);
   const [currentCourt, setCurrentCourt] = useState("1");
   const availableCourts = ["1", "2", "3", "4", "5"];
+  const [displayDate, setDisplayDate] = useState(dayjs());
   const booked = [5, 6, 7, 16, 17, 18, 19];
   const reserved = [9, 10, 22, 23];
-  // const [currentDate, setCurrentDate] = useState(new Date());
-
-  // let slides = [
-  //   <img src="https://picsum.photos/800/300/?random" alt="1" />,
-  //   <img src="https://picsum.photos/800/301/?random" alt="2" />,
-  //   <img src="https://picsum.photos/800/302/?random" alt="3" />,
-  //   <img src="https://picsum.photos/800/303/?random" alt="4" />,
-  //   <img src="https://picsum.photos/800/304/?random" alt="5" />,
-  // ];
 
   const slides = [
     {
@@ -58,17 +48,12 @@ const Badminton = () => {
   useEffect(() => {
     // Update the document title using the browser API
     console.log("I am in badminton");
-  });
+    setSelectedSlots(new Set());
+  }, [displayDate]);
 
   const onClick = () => {
     //setSelectedCard(card);
     navigate("/playground");
-  };
-
-  const setToday = () => {
-    //setSelectedCard(card);
-    setSelectedDate(dayjs());
-    setVisible(false);
   };
 
   const callback = function (index) {
@@ -78,6 +63,7 @@ const Badminton = () => {
   const onCourtChange = (key) => {
     setCurrentCourt(key);
     setSelectedCourt([key]);
+    setSelectedSlots(new Set());
     console.log(key);
   };
 
@@ -107,14 +93,6 @@ const Badminton = () => {
         Go back
       </Button>
       <div className="carousel-container">
-        {/* <Carousel
-          className="carousel-item"
-          slides={slides}
-          autoplay={false}
-          arrows={true}
-          interval={4000}
-          onSlideChange={callback}
-        /> */}
         <Carousel
           className="carousel-item"
           slides={slides}
@@ -127,7 +105,10 @@ const Badminton = () => {
       <div className="badminton">
         <div className="badminton-courts">
           <div className="badminton-courts-tab-header">
-            <CustomCalendar />
+            <CustomCalendar
+              displayDate={displayDate}
+              setDisplayDate={setDisplayDate}
+            />
           </div>
           <Tabs defaultActiveKey="1" centered onChange={onCourtChange}>
             {availableCourts.map((tab, index) => (
@@ -164,6 +145,7 @@ const Badminton = () => {
             </Button>
           </div>
           <BookingPanel
+            displayDate={displayDate}
             selectedKeys={selectedSlots}
             selectedCourt={selectedCourt}
           ></BookingPanel>

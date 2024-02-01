@@ -78,6 +78,7 @@
   cursor: pointer;
   text-align: center;
   font-family: "Times New Roman", Times, serif;
+  animation: fadeEffect 1s both;
 }
 
 .event-slot-reserved {
@@ -90,6 +91,7 @@
   cursor: pointer;
   text-align: center;
   font-family: "Times New Roman", Times, serif;
+  animation: fadeEffect 1s both;
 }
 
 .event-slot-available {
@@ -102,6 +104,7 @@
   text-align: center;
   /* justify-content: center; */
   font-family: "Times New Roman", Times, serif;
+  animation: fadeEffect 1s both;
 }
 
 .current-time-cursor {
@@ -131,4 +134,18 @@
 .calendar-scheduler::-webkit-scrollbar-thumb {
   background-color: #d1d1d1; /* color of the scroll thumb */
   border-radius: 10px; /* roundness of the scroll thumb */
+}
+
+@keyframes fadeEffect {
+  0% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 0.5;
+  }
+
+  100% {
+    opacity: 1;
+  }
 }

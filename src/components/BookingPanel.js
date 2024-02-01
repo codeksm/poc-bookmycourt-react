@@ -4,15 +4,30 @@ import { useState, useEffect } from "react";
 import "./BookingPanel.css";
 import { TIME_SLOT_MAP } from "../data/hours";
 
-const BookingPanel = ({ selectedKeys, selectedCourt }) => {
+const BookingPanel = ({ displayDate, selectedKeys, selectedCourt }) => {
   const [slots, setSlots] = useState([]);
+  const [isDataChanged, setDataChanged] = useState(false);
+  const [isSlotChanged, setSlotChanged] = useState(false);
+  const [isCourtChanged, setCourtChanged] = useState(false);
+
   useEffect(() => {
     // sort selected slot numbers
     console.log("I am in booking panel");
+    setSlotChanged(!isSlotChanged);
     if (selectedKeys != undefined) {
       setSlots(Array.from(selectedKeys).sort((a, b) => a - b));
     }
   }, [selectedKeys]);
+
+  useEffect(() => {
+    setCourtChanged(!isCourtChanged);
+    console.log("court changed!");
+  }, [selectedCourt]);
+
+  useEffect(() => {
+    setDataChanged(!isDataChanged);
+    console.log("court changed!");
+  }, [displayDate]);
 
   const onClick = () => {
     //setSelectedCard(card);
@@ -21,50 +36,75 @@ const BookingPanel = ({ selectedKeys, selectedCourt }) => {
 
   return (
     <div className="bookingpanel-body">
-      <fieldset>
-        <legend>Sport</legend>
-        <div className="bookingpanel-sport">Badminton</div>
-      </fieldset>
+      <div className={`bookingpanel-sport`}>
+        <span className="bookingpanel-left">Sport</span>
+        <span className="bookingpanel-right">Badminton</span>
+      </div>
 
-      <fieldset>
-        <legend>From</legend>
-        {slots.length > 0 && (
-          <div className="bookingpanel-from">{TIME_SLOT_MAP.get(slots[0])}</div>
-        )}
-      </fieldset>
+      <div
+        className={`bookingpanel-date ${
+          isDataChanged ? "fade-out" : "fade-in"
+        }`}
+      >
+        <span className="bookingpanel-left">Date</span>
+        <span className="bookingpanel-right">
+          {displayDate.format("DD-MM-YYYY")}
+        </span>
+      </div>
 
-      <fieldset>
-        <legend>To</legend>
-        {slots.length > 0 && (
-          <div className="bookingpanel-to">
-            {TIME_SLOT_MAP.get(slots[slots.length - 1])}
-          </div>
-        )}
-      </fieldset>
+      <div
+        className={`bookingpanel-court ${
+          isCourtChanged ? "fade-out" : "fade-in"
+        }`}
+      >
+        <span className="bookingpanel-left">Court</span>
+        <span className="bookingpanel-right">{selectedCourt.join(", ")}</span>
+      </div>
 
-      <fieldset>
-        <legend>Court</legend>
-        {selectedCourt.length > 0 && (
-          <div className="bookingpanel-court">{selectedCourt.join(", ")}</div>
-        )}
-      </fieldset>
+      {slots.length > 0 && (
+        <div
+          className={`bookingpanel-from ${
+            isSlotChanged ? "fade-out" : "fade-in"
+          }`}
+        >
+          <span className="bookingpanel-left">From</span>
+          <span className="bookingpanel-right">
+            {TIME_SLOT_MAP.get(slots[0])}
+          </span>
+        </div>
+      )}
 
-      <fieldset>
-        <legend>Date</legend>
-        <div className="bookingpanel-date">12-02-2023</div>
-      </fieldset>
+      {slots.length > 1 && (
+        <div
+          className={`bookingpanel-to ${
+            isSlotChanged ? "fade-out" : "fade-in"
+          }`}
+        >
+          <span className="bookingpanel-left">To</span>
+          <span className="bookingpanel-right">
+            {TIME_SLOT_MAP.get(slots[slots.length - 1] + 1)}
+          </span>
+        </div>
+      )}
 
-      <fieldset>
-        <legend>Total Amount</legend>
-        <div className="bookingpanel-amount">400.00</div>
-      </fieldset>
+      {slots.length > 1 && (
+        <div
+          className={`bookingpanel-cost ${
+            isSlotChanged ? "fade-out" : "fade-in"
+          }`}
+        >
+          <span className="bookingpanel-left">Amount</span>
+          <span className="bookingpanel-right">400.00</span>
+        </div>
+      )}
 
-      <fieldset>
-        <legend>Note</legend>
-        <div className="bookingpanel-note"></div>
-      </fieldset>
-
-      <Button onClick={onClick}>Reserve Slot</Button>
+      {slots.length > 1 && (
+        <div className="reserve-slot">
+          <Button type="primary" className="reserve-slot-btn" onClick={onClick}>
+            Reserve Slot
+          </Button>
+        </div>
+      )}
     </div>
   );
 };
