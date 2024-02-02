@@ -8,23 +8,33 @@ import { LeftOutlined, RightOutlined } from "@ant-design/icons";
 
 const CustomCalendar = ({ displayDate, setDisplayDate }) => {
   const [currentDate, setCurrentDate] = useState(dayjs());
-  // const [displayDate, setDisplayDate] = useState(dayjs());
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   const changeDate = (amount) => {
     let newDate = dayjs(currentDate).add(amount, "day");
     setCurrentDate(newDate);
+    setCurrentIndex((prevIndex) => (prevIndex + amount) % 7);
+    showSlide(currentIndex + amount);
   };
 
   const setToday = () => {
     setDisplayDate(dayjs());
     setCurrentDate(dayjs());
+    setCurrentIndex(0);
+    showSlide(0);
+  };
+
+  const showSlide = (index) => {
+    const moveAmount = -index * 10 + "%";
+    document.getElementById("sliderList").style.transform =
+      "translateX(" + moveAmount + ")";
   };
 
   const renderDateHeaders = () => {
     const headers = [];
     let date = currentDate;
 
-    for (let i = 0; i < 7; i++) {
+    for (let i = 0; i < 14; i++) {
       let tempDate = date.add(i, "day");
       headers.push(
         <div
@@ -57,7 +67,11 @@ const CustomCalendar = ({ displayDate, setDisplayDate }) => {
       </div>
       <div className="date-navigation">
         <LeftOutlined className="left" onClick={() => changeDate(-1)} />
-        <div className="date-headers">{renderDateHeaders()}</div>
+        <div className="date-headers-container">
+          <div className="date-headers" id="sliderList">
+            {renderDateHeaders()}
+          </div>
+        </div>
         <RightOutlined className="right" onClick={() => changeDate(1)} />
       </div>
     </>
