@@ -135,7 +135,11 @@ const Scheduler = ({ booked, reserved, selectedKeys, setSelectedKeys }) => {
             return (
               <div
                 key={eventSlotKey}
-                className="event-slot-available"
+                className={` ${
+                  selectedKeys.has(eventSlotKey)
+                    ? "event-slot-available"
+                    : "event-slot-available-not-selected"
+                }`}
                 style={{
                   top: `${(eventSlotKey - 1) * 25}px`,
                   height: `${1 * 25}px`,

@@ -107,6 +107,20 @@
   animation: fadeEffect 1s both;
 }
 
+.event-slot-available-not-selected {
+  position: absolute;
+  width: 100%;
+  background-color: none;
+  color: black;
+  padding: 5px;
+  cursor: pointer;
+  text-align: center;
+  /* justify-content: center; */
+  font-family: "Times New Roman", Times, serif;
+  background-color: none;
+  transition: background-color 500ms linear;
+}
+
 .current-time-cursor {
   position: absolute;
   left: 0px; /* Adjust left position to align with the time slots column */
