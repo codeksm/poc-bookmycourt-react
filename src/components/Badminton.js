@@ -12,6 +12,8 @@ import Carousel from "react-spring-3d-carousel";
 import CustomCalendar from "./CustomCalendar";
 import { v4 as uuidv4 } from "uuid";
 import CourtSelection from "./CourtSelection";
+import PlaygroundService from "../service/PlaygroundService";
+import BookSlotService from "../service/BookSlotService";
 
 const { TabPane } = Tabs;
 uuidv4();
@@ -19,12 +21,13 @@ uuidv4();
 const Badminton = () => {
   const navigate = useNavigate();
   const [selectedSlots, setSelectedSlots] = useState(new Set());
-  const [selectedCourt, setSelectedCourt] = useState(["1"]);
+  const [selectedCourt, setSelectedCourt] = useState([]);
   const [currentCourt, setCurrentCourt] = useState("1");
-  const availableCourts = ["1", "2", "3", "4", "5"];
+  const [courts, setCourts] = useState([]);
+  const [booked, setBookedSlots] = useState([]);
+  const [reserved, setReservedSlots] = useState([]);
   const [displayDate, setDisplayDate] = useState(dayjs());
-  const booked = [5, 6, 7, 16, 17, 18, 19];
-  const reserved = [9, 10, 22, 23];
+
 
   const slides = [
     {
@@ -46,9 +49,49 @@ const Badminton = () => {
   ];
 
   useEffect(() => {
+    console.log("I am in badminton");
+    const fetchDataSequentially = async () => {
+      await PlaygroundService.getCourts("65d429328f69db0675dba1d3", "Badminton")
+      .then((response) => {
+        setCourts(response.data);
+        setCurrentCourt(response.data[0])
+        setSelectedCourt([response.data[0]]);
+        console.log("Courts ", response.data);
+
+        BookSlotService.getSlots("65d429328f69db0675dba1d3", "Badminton", response.data[0], displayDate.format('YYYY-MM-DD'))
+        .then((response) => {
+          setBookedSlots(response.data.bSlots);
+          setReservedSlots(response.data.rSlots)
+          console.log("Slots  ", response.data);
+        })
+        .catch((error) => {
+          console.log("Error . ", error);
+        });
+      })
+      .catch((error) => {
+        console.log("Error . ", error);
+      });
+
+      
+      
+    }
+    fetchDataSequentially();
+    
+  }, []);
+
+  useEffect(() => {
     // Update the document title using the browser API
     console.log("I am in badminton");
     setSelectedSlots(new Set());
+    BookSlotService.getSlots("65d429328f69db0675dba1d3", "Badminton", currentCourt, displayDate.format('YYYY-MM-DD'))
+        .then((response) => {
+          setBookedSlots(response.data.bSlots);
+          setReservedSlots(response.data.rSlots)
+          console.log("Slots  ", response.data);
+        })
+        .catch((error) => {
+          console.log("Error . ", error);
+        });
   }, [displayDate]);
 
   const onClick = () => {
@@ -111,8 +154,8 @@ const Badminton = () => {
             />
           </div>
           <Tabs defaultActiveKey="1" centered onChange={onCourtChange}>
-            {availableCourts.map((tab, index) => (
-              <TabPane tab={`Court ${index + 1}`} key={tab}>
+            {courts.map((tab, index) => (
+              <TabPane tab={`Court ${tab}`} key={tab}>
                 <Scheduler
                   booked={booked}
                   reserved={reserved}
@@ -126,7 +169,7 @@ const Badminton = () => {
 
         <div className="panel2">
           <CourtSelection
-            courts={availableCourts}
+            courts={courts}
             currentCourt={currentCourt}
             setSelectedCourt={setSelectedCourt}
           />

@@ -7,6 +7,20 @@
   overflow-y: auto;
   max-height: 330px;
   border-radius: 5px;
+  /* animation: fadeEffect 2s 2; */
+  animation: fadeIn 2s;
+}
+
+.calendar-scheduler-flip {
+  display: flex;
+  top: 0;
+  bottom: 0;
+  border: 1px solid #ccc;
+  overflow-y: auto;
+  max-height: 330px;
+  border-radius: 5px;
+  animation: fadeEffect 2s;
+  /* animation: fadeIn 5s; */
 }
 
 .time-column {
@@ -97,14 +111,14 @@
 .event-slot-available {
   position: absolute;
   width: 100%;
-  background-color: none;
+  background-color: #6B8E23;
   color: black;
   padding: 5px;
   cursor: pointer;
   text-align: center;
-  /* justify-content: center; */
   font-family: "Times New Roman", Times, serif;
-  animation: fadeEffect 1s both;
+  transition: background-color 400ms linear;
+  /* animation: fadeEffect 500ms both; */
 }
 
 .event-slot-available-not-selected {
@@ -151,6 +165,22 @@
 }
 
 @keyframes fadeEffect {
+  0% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 0.5;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  /* 0% { opacity: 0; }
+  100% { opacity: 1; } */
   0% {
     opacity: 0;
   }

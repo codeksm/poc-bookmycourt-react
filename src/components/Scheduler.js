@@ -46,14 +46,20 @@ const Scheduler = ({ booked, reserved, selectedKeys, setSelectedKeys }) => {
   const timeSlots = Array.from({ length: 24 }, (_, index) => index + 1); // 24 hours
   const eventSlots = Array.from({ length: 48 }, (_, index) => index + 1); // 24 hours, 1 hour as two slots
   const [currentTime, setCurrentTime] = useState(new Date());
+  const [flip, setFlip] = useState(false);
   //const [selectedKeys, setSelectedKeys] = useState(new Set());
+
+  useEffect(() => {
+    console.log("Hello from shceduler");
+    setFlip(!flip)
+  }, [booked]);
 
   useEffect(() => {
     // Update current time every minute
     const intervalId = setInterval(() => {
       setCurrentTime(new Date());
-      console.log(`New time ${currentTime.getHours()}`);
-      console.log(`min ${currentTime.getMinutes()}`);
+      // console.log(`New time ${currentTime.getHours()}`);
+      // console.log(`min ${currentTime.getMinutes()}`);
     }, 10000);
 
     return () => clearInterval(intervalId);
@@ -85,7 +91,7 @@ const Scheduler = ({ booked, reserved, selectedKeys, setSelectedKeys }) => {
   };
 
   return (
-    <div className="calendar-scheduler">
+    <div className={flip ? 'calendar-scheduler-flip' : 'calendar-scheduler'} >
       <div className="time-column">
         {timeSlots.map((hour) => (
           <div key={hour} className="time-slot">
@@ -143,9 +149,6 @@ const Scheduler = ({ booked, reserved, selectedKeys, setSelectedKeys }) => {
                 style={{
                   top: `${(eventSlotKey - 1) * 25}px`,
                   height: `${1 * 25}px`,
-                  backgroundColor: selectedKeys.has(eventSlotKey)
-                    ? "#6B8E23"
-                    : "",
                   color: selectedKeys.has(eventSlotKey) ? "white" : "",
                 }}
                 onClick={() => handleAvailableEventClick(eventSlotKey)}
