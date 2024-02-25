@@ -1,6 +1,6 @@
 .bookingpanel-body {
   width: 350px;
-  height: 380px;
+  height: 410px;
   background-color: #f8f8f8;
   /* border: 1px solid #ccc; */
   border-radius: 8px;
@@ -61,7 +61,8 @@ button:hover {
 .bookingpanel-from,
 .bookingpanel-to,
 .bookingpanel-court,
-.bookingpanel-cost {
+.bookingpanel-cost,
+.bookingpanel-type {
   height: 40px;
   width: 95%;
   padding: 10px;
@@ -138,4 +139,9 @@ button:hover {
 .reserve-slot-btn {
   width: 100%;
   margin-top: 10px;
+}
+
+.bookingtypeSelect {
+  margin-top: 0px;
+  padding: 0px;
 }

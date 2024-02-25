@@ -1,4 +1,4 @@
-import { Button } from "antd";
+import { Button, Select } from "antd";
 import React from "react";
 import { useState, useEffect } from "react";
 import "./BookingPanel.css";
@@ -34,6 +34,10 @@ const BookingPanel = ({ displayDate, selectedKeys, selectedCourt }) => {
     //navigate("/playground");
   };
 
+  const handleBookingType = (value) => {
+    console.log(`selected ${value}`);
+  };
+
   return (
     <div className="bookingpanel-body">
       <div className={`bookingpanel-sport`}>
@@ -51,6 +55,36 @@ const BookingPanel = ({ displayDate, selectedKeys, selectedCourt }) => {
           {displayDate.format("DD-MM-YYYY")}
         </span>
       </div>
+
+      <div
+          className={`bookingpanel-type ${
+            isSlotChanged ? "fade-out" : "fade-in"
+          }`}
+        >
+          <Select
+            className="bookingtypeSelect"
+            size='small'
+            placeholder="Booking Type"
+            style={{
+              width: '100%',
+            }}
+            onChange={handleBookingType}
+            options={[
+              {
+                value: 'Default',
+                label: 'Default',
+              },
+              {
+                value: 'Coaching',
+                label: 'Coaching',
+              },
+              {
+                value: 'Tournament',
+                label: 'Tournament',
+              },
+            ]}
+          />
+        </div>
 
       <div
         className={`bookingpanel-court ${
