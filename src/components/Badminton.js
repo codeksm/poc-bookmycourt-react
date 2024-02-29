@@ -52,31 +52,27 @@ const Badminton = () => {
     console.log("I am in badminton");
     const fetchDataSequentially = async () => {
       await PlaygroundService.getCourts("65d429328f69db0675dba1d3", "Badminton")
-      .then((response) => {
-        setCourts(response.data);
-        setCurrentCourt(response.data[0])
-        setSelectedCourt([response.data[0]]);
-        console.log("Courts ", response.data);
-
-        BookSlotService.getSlots("65d429328f69db0675dba1d3", "Badminton", response.data[0], displayDate.format('YYYY-MM-DD'))
         .then((response) => {
-          setBookedSlots(response.data.bSlots);
-          setReservedSlots(response.data.rSlots)
-          console.log("Slots  ", response.data);
+          setCourts(response.data);
+          setCurrentCourt(response.data[0])
+          setSelectedCourt([response.data[0]]);
+          console.log("Courts ", response.data);
+
+          BookSlotService.getSlots("65d429328f69db0675dba1d3", "Badminton", response.data[0], displayDate.format('YYYY-MM-DD'))
+            .then((response) => {
+              setBookedSlots(response.data.bSlots);
+              setReservedSlots(response.data.rSlots)
+              console.log("Slots  ", response.data);
+            })
+            .catch((error) => {
+              console.log("Error . ", error);
+            });
         })
         .catch((error) => {
           console.log("Error . ", error);
         });
-      })
-      .catch((error) => {
-        console.log("Error . ", error);
-      });
-
-      
-      
     }
     fetchDataSequentially();
-    
   }, []);
 
   useEffect(() => {
@@ -84,14 +80,14 @@ const Badminton = () => {
     console.log("I am in badminton");
     setSelectedSlots(new Set());
     BookSlotService.getSlots("65d429328f69db0675dba1d3", "Badminton", currentCourt, displayDate.format('YYYY-MM-DD'))
-        .then((response) => {
-          setBookedSlots(response.data.bSlots);
-          setReservedSlots(response.data.rSlots)
-          console.log("Slots  ", response.data);
-        })
-        .catch((error) => {
-          console.log("Error . ", error);
-        });
+      .then((response) => {
+        setBookedSlots(response.data.bSlots);
+        setReservedSlots(response.data.rSlots)
+        console.log("Slots  ", response.data);
+      })
+      .catch((error) => {
+        console.log("Error . ", error);
+      });
   }, [displayDate]);
 
   const onClick = () => {

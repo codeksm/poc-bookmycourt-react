@@ -141,11 +141,10 @@ const Scheduler = ({ booked, reserved, selectedKeys, setSelectedKeys }) => {
             return (
               <div
                 key={eventSlotKey}
-                className={` ${
-                  selectedKeys.has(eventSlotKey)
+                className={` ${selectedKeys.has(eventSlotKey)
                     ? "event-slot-available"
                     : "event-slot-available-not-selected"
-                }`}
+                  }`}
                 style={{
                   top: `${(eventSlotKey - 1) * 25}px`,
                   height: `${1 * 25}px`,
@@ -175,10 +174,9 @@ const Scheduler = ({ booked, reserved, selectedKeys, setSelectedKeys }) => {
         <div
           className="current-time-cursor"
           style={{
-            top: `${
-              (currentTime.getHours() - 1) * 50 +
+            top: `${(currentTime.getHours() - 1) * 50 +
               currentTime.getMinutes() * 0.83
-            }px`,
+              }px`,
           }}
         ></div>
       </div>

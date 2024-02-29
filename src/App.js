@@ -1,7 +1,8 @@
 import React from "react";
 import PgDashboard from "./pgdashboard/pgDashboard";
-import { Routes, Route } from "react-router-dom";
+import { Router, Routes, Route, Link } from "react-router-dom";
 import Badminton from "./components/Badminton";
+import UpcomingEvents from "./upcoming/UpcomingPage";
 
 import {
   LaptopOutlined,
@@ -37,6 +38,7 @@ const App = () => {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
   return (
+
     <Layout>
       <Header
         style={{
@@ -48,13 +50,22 @@ const App = () => {
         <Menu
           theme="dark"
           mode="horizontal"
-          defaultSelectedKeys={["2"]}
-          items={items1}
+          defaultSelectedKeys={["1"]}
           style={{
             flex: 1,
             minWidth: 0,
           }}
-        />
+        >
+          <Menu.Item key="1">
+            <span>Dashboard</span>
+            <Link to="/playground" />
+          </Menu.Item>
+          <Menu.Item key="2">
+
+            <span>Up Coming</span>
+            <Link to="/upcoming" />
+          </Menu.Item>
+        </Menu>
       </Header>
       <Layout>
         <Layout
@@ -87,11 +98,13 @@ const App = () => {
               <Route path="/playground" element={<PgDashboard />}></Route>
               <Route path="/badminton" element={<Badminton />} />
               <Route path="/football" element={<Football />} />
+              <Route path="/upcoming" element={<UpcomingEvents />} />
             </Routes>
           </Content>
         </Layout>
       </Layout>
     </Layout>
+
   );
 };
 export default App;
