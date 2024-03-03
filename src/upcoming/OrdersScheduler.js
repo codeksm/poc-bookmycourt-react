@@ -52,7 +52,7 @@ import { HOURS_MAP, TIME_SLOT_MAP, TIME_SLOT_TO_INDEX_MAP } from "../data/hours"
 60 min slot == 50 px
 1 min == 0.83 px
 */
-const OrdersScheduler = ({ date, court, orders }) => {
+const OrdersScheduler = ({ date, court, orders, setUserSelectedOrder }) => {
   const timeSlots = Array.from({ length: 24 }, (_, index) => index + 1); // 24 hours
   const eventSlots = Array.from({ length: 48 }, (_, index) => index + 1); // 24 hours, 1 hour as two slots
   const [currentTime, setCurrentTime] = useState(new Date());
@@ -106,16 +106,17 @@ const OrdersScheduler = ({ date, court, orders }) => {
               <div
                 key={event.id}
                 className="event"
+                tabindex="0"
                 style={{
                   top: `${(TIME_SLOT_TO_INDEX_MAP.get(event.startTime) - 1) * 25}px`,
                   height: `${(TIME_SLOT_TO_INDEX_MAP.get(event.endTime) - TIME_SLOT_TO_INDEX_MAP.get(event.startTime)) * 25}px`,
                 }}
-                onClick={() => handleEventClick(event)}
+                onClick={() => setUserSelectedOrder(event)}
               >
                 <div style={{ display: "inline-block" }}>
                   <span style={{ fontWeight: "normal" }}> {event.id} |  {event.bookingType} </span>
                   <br />
-                  <span style={{ fontWeight: "lighter" }} > {event.startTime} - {event.endTime} </span>
+                  <span style={{ fontWeight: "normal" }} > {event.startTime} - {event.endTime} </span>
                 </div>
               </div>
             );

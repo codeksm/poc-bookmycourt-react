@@ -54,7 +54,8 @@
 
 .events-column {
   position: relative;
-  flex: 0 0 500px; /* Fixed width for time column */
+  flex: 0 0 500px;
+  /* Fixed width for time column */
   /* border-right: 1px solid #ccc; */
   /* display: flex; */
   flex-direction: column;
@@ -72,6 +73,11 @@
   border-bottom: 2px solid white;
 }
 
+.event:focus {
+  /* background-color: black; */
+  border-left: 7px solid rgb(24, 115, 185);
+}
+
 .event-slot {
   display: flex;
   align-items: center;
@@ -80,62 +86,11 @@
   height: 25px;
 }
 
-.event-slot-booked {
-  position: absolute;
-  width: 100%;
-  background-color: rgb(52, 176, 234);
-  /* background-color: #8ccaf4; */
-  color: #fff;
-  padding: 5px;
-  cursor: pointer;
-  text-align: center;
-  font-family: "Times New Roman", Times, serif;
-  animation: fadeEffect 1s both;
-}
-
-.event-slot-reserved {
-  position: absolute;
-  width: 100%;
-  background-color: rgb(52, 176, 234);
-  /* background-color: #8ccaf4; */
-  color: white;
-  padding: 5px;
-  cursor: pointer;
-  text-align: center;
-  font-family: "Times New Roman", Times, serif;
-  animation: fadeEffect 1s both;
-}
-
-.event-slot-available {
-  position: absolute;
-  width: 100%;
-  background-color: #6B8E23;
-  color: black;
-  padding: 5px;
-  cursor: pointer;
-  text-align: center;
-  font-family: "Times New Roman", Times, serif;
-  transition: background-color 400ms linear;
-  /* animation: fadeEffect 500ms both; */
-}
-
-.event-slot-available-not-selected {
-  position: absolute;
-  width: 100%;
-  background-color: none;
-  color: black;
-  padding: 5px;
-  cursor: pointer;
-  text-align: center;
-  /* justify-content: center; */
-  font-family: "Times New Roman", Times, serif;
-  background-color: none;
-  transition: background-color 500ms linear;
-}
 
 .current-time-cursor {
   position: absolute;
-  left: 0px; /* Adjust left position to align with the time slots column */
+  left: 0px;
+  /* Adjust left position to align with the time slots column */
   right: 0;
   top: 0;
   height: 2px;
@@ -154,12 +109,15 @@
 }
 
 .calendar-scheduler::-webkit-scrollbar {
-  width: 10px; /* width of the entire scrollbar */
+  width: 10px;
+  /* width of the entire scrollbar */
 }
 
 .calendar-scheduler::-webkit-scrollbar-thumb {
-  background-color: #d1d1d1; /* color of the scroll thumb */
-  border-radius: 10px; /* roundness of the scroll thumb */
+  background-color: #d1d1d1;
+  /* color of the scroll thumb */
+  border-radius: 10px;
+  /* roundness of the scroll thumb */
 }
 
 @keyframes fadeEffect {
@@ -177,6 +135,7 @@
 }
 
 @keyframes fadeIn {
+
   /* 0% { opacity: 0; }
   100% { opacity: 1; } */
   0% {

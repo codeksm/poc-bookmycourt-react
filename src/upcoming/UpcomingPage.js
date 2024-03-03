@@ -1,4 +1,4 @@
-import { Button, Tabs } from "antd";
+import { Tabs } from "antd";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import CustomCalendar from "../components/CustomCalendar";
@@ -7,19 +7,26 @@ import dayjs from "dayjs";
 import '../components/CustomCalendar.css'
 import OrdersScheduler from "./OrdersScheduler";
 import PlaygroundService from "../service/PlaygroundService";
-import BookSlotService from "../service/BookSlotService";
 import BookingOrderService from "../service/BookingOrderService";
+import './UpcomingPage.css'
+import DisplayOrder from "./DisplayOrder";
 
 const { TabPane } = Tabs;
 
 const UpcomingEvents = () => {
-  const navigate = useNavigate();
 
   const [selectedCourt, setSelectedCourt] = useState([]);
   const [currentCourt, setCurrentCourt] = useState("1");
   const [courts, setCourts] = useState(["1", "2", "3"]);
   const [orders, setOrders] = useState([]);
+  const [userSelectedOrder, setUserSelectedOrder] = useState({});
   const [date, setDisplayDate] = useState(dayjs());
+
+  useEffect(() => {
+    // Update the document title using the browser API
+    console.log("selected order. " + userSelectedOrder);
+
+  }, [userSelectedOrder]);
 
   useEffect(() => {
     console.log("I am in badminton");
@@ -50,6 +57,7 @@ const UpcomingEvents = () => {
   useEffect(() => {
     // Update the document title using the browser API
     console.log("I am in up coming orders");
+    setUserSelectedOrder({});
     BookingOrderService.getOrdersFor("65d429328f69db0675dba1d3", date.format('YYYY-MM-DD'))
       .then((response) => {
         setOrders(response.data.content);
@@ -63,14 +71,15 @@ const UpcomingEvents = () => {
 
   const onCourtChange = (key) => {
     setCurrentCourt(key);
+    setUserSelectedOrder({});
     console.log(key);
   };
 
   return (
     <>
-      <div className="badminton">
-        <div className="badminton-courts">
-          <div className="badminton-courts-tab-header">
+      <div className="upcomingpage">
+        <div className="upcomingpage-courts">
+          <div className="upcomingpage-courts-tab-header">
             <CustomCalendar
               displayDate={date}
               setDisplayDate={setDisplayDate}
@@ -79,10 +88,15 @@ const UpcomingEvents = () => {
           <Tabs defaultActiveKey="1" centered onChange={onCourtChange}>
             {courts.map((tab, index) => (
               <TabPane tab={`Court ${tab}`} key={tab}>
-                <OrdersScheduler date={date} court={tab} orders={orders}> </OrdersScheduler>
+                <OrdersScheduler date={date} court={tab} orders={orders} setUserSelectedOrder={setUserSelectedOrder}> </OrdersScheduler>
               </TabPane>
             ))}
           </Tabs>
+        </div>
+        <div className="upcomingpage-displayorder">
+          {userSelectedOrder && userSelectedOrder.id && (
+            <DisplayOrder order={userSelectedOrder} />
+          )}
         </div>
       </div>
     </>

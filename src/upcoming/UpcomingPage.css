@@ -1,0 +1,59 @@
+.upcomingpage {
+  display: flex;
+}
+
+.upcomingpage-courts-tab-header {
+  max-width: 630px;
+  /* Adjust the width as needed */
+  height: 125px;
+  margin: 0px;
+  padding: 0px;
+  border-radius: 10px 10px 0px 0px;
+  background-color: none;
+}
+
+.upcomingpage-courts {
+  width: 630px;
+  height: auto;
+  margin: 5px;
+}
+
+.ant-tabs {
+  background-color: #f8f8f8;
+  /* border-radius: 8px; */
+  height: 50px;
+  margin: 0;
+}
+
+.ant-tabs-tab {
+  color: #333;
+  border: 1px solid #e8e8e8;
+  background-color: #fff;
+  border-radius: 8px 8px 0 0;
+  margin-right: 0;
+}
+
+.ant-tabs-tab-active {
+  background-color: #1890ff;
+  color: #fff;
+  border-color: #1890ff;
+}
+
+.ant-tabs-ink-bar {
+  background-color: #1890ff;
+}
+
+.ant-tabs-content {
+  /* padding: 16px; */
+  border: 1px solid #e8e8e8;
+  border-radius: 5px;
+}
+
+/* Optional: Add space between tabs for better readability */
+.ant-tabs-tab {
+  margin-right: 8px;
+}
+
+.upcomingpage-displayorder {
+  margin-left: 30px;
+}

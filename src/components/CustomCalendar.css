@@ -35,7 +35,8 @@
   min-width: 50px;
   min-height: 50px;
   border-radius: 10%;
-  background-color: #3498db;
+  background-color: #1b7fc7;
+  /* background-color: #3498db; */
   color: #fff;
   display: flex;
   flex-direction: column;
@@ -50,8 +51,10 @@
 }
 
 .date-header {
-  transform: rotateY(0deg); /* Adjust the angle as needed */
-  transform-origin: center; /* Set the rotation origin to the center of the element */
+  transform: rotateY(0deg);
+  /* Adjust the angle as needed */
+  transform-origin: center;
+  /* Set the rotation origin to the center of the element */
 }
 
 /* Add hover effect if you want the rotation only on hover */
@@ -69,7 +72,7 @@
   min-width: 60px;
   min-height: 60px;
   border-radius: 10%;
-  background-color: #3498db;
+  background-color: #1b7fc7;
   color: #fff;
   display: flex;
   flex-direction: column;
@@ -85,25 +88,32 @@
 
 /* Keyframes */
 @keyframes wiggle {
+
   0%,
   7% {
     transform: rotateZ(0);
   }
+
   15% {
     transform: rotateZ(-15deg);
   }
+
   20% {
     transform: rotateZ(30deg);
   }
+
   25% {
     transform: rotateZ(-10deg);
   }
+
   30% {
     transform: rotateZ(6deg);
   }
+
   35% {
     transform: rotateZ(-4deg);
   }
+
   40%,
   100% {
     transform: rotateZ(0);
@@ -148,7 +158,8 @@
 
 .left:hover,
 .right:hover {
-  color: #007bff; /* Change to your desired hover color */
+  color: #007bff;
+  /* Change to your desired hover color */
 }
 
 .date-headers-container {
