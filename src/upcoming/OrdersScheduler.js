@@ -1,51 +1,8 @@
 import React from "react";
-import { List, Card } from "antd";
 import { useEffect, useState } from "react";
 import "./OrdersScheduler.css";
 import { HOURS_MAP, TIME_SLOT_MAP, TIME_SLOT_TO_INDEX_MAP } from "../data/hours";
 
-// const orders = [
-//   {
-//     id: 1,
-//     date: "2023-01-12",
-//     username: "ksm",
-//     bookingType: "Reserved",
-//     sportType: "Badminton",
-//     courtName: "1",
-//     startTime: 3,
-//     endTime: 8,
-//   },
-//   {
-//     id: 2,
-//     date: "2023-01-12",
-//     username: "user2",
-//     bookingType: "Booked",
-//     sportType: "Badminton",
-//     courtName: "2",
-//     startTime: 11,
-//     endTime: 13,
-//   },
-//   {
-//     id: 3,
-//     date: "2023-01-12",
-//     username: "user3",
-//     bookingType: "Booked",
-//     sportType: "Badminton",
-//     courtName: "2",
-//     startTime: 13,
-//     endTime: 15,
-//   },
-//   {
-//     id: 4,
-//     date: "2023-01-12",
-//     username: "user5",
-//     bookingType: "Booked",
-//     sportType: "Badminton",
-//     courtName: "2",
-//     startTime: 23,
-//     endTime: 27,
-//   },
-// ];
 
 /*
 30 min slot == 25 px
@@ -67,8 +24,6 @@ const OrdersScheduler = ({ date, court, orders, setUserSelectedOrder }) => {
     // Update current time every minute
     const intervalId = setInterval(() => {
       setCurrentTime(new Date());
-      // console.log(`New time ${currentTime.getHours()}`);
-      // console.log(`min ${currentTime.getMinutes()}`);
     }, 10000);
 
     return () => clearInterval(intervalId);
@@ -100,28 +55,76 @@ const OrdersScheduler = ({ date, court, orders, setUserSelectedOrder }) => {
           <div key={slot} className="event-slot"></div>
         ))}
 
-        {orders.map((event) => {
-          if (event.court === court) {
-            return (
-              <div
-                key={event.id}
-                className="event"
-                tabindex="0"
-                style={{
-                  top: `${(TIME_SLOT_TO_INDEX_MAP.get(event.startTime) - 1) * 25}px`,
-                  height: `${(TIME_SLOT_TO_INDEX_MAP.get(event.endTime) - TIME_SLOT_TO_INDEX_MAP.get(event.startTime)) * 25}px`,
-                }}
-                onClick={() => setUserSelectedOrder(event)}
-              >
-                <div style={{ display: "inline-block" }}>
-                  <span style={{ fontWeight: "normal" }}> {event.id} |  {event.bookingType} </span>
-                  <br />
-                  <span style={{ fontWeight: "normal" }} > {event.startTime} - {event.endTime} </span>
-                </div>
-              </div>
-            );
-          }
+        {orders.map((event, index) => {
+          const topPosition = (TIME_SLOT_TO_INDEX_MAP.get(event.startTime) - 1) * 25;
+          const height = (TIME_SLOT_TO_INDEX_MAP.get(event.endTime) - TIME_SLOT_TO_INDEX_MAP.get(event.startTime)) * 25;
+          const style = {
+            top: `${topPosition}px`,
+            height: `${height}px`,
+          };
 
+          // setSlotElements(updatedSlotElements)
+          if (event.court === court) {
+
+            const overlappingEvents = orders.filter((e, i) => (
+              e.court === court &&
+              i !== index && // Exclude the current event from overlapping check
+              ((TIME_SLOT_TO_INDEX_MAP.get(event.startTime) === TIME_SLOT_TO_INDEX_MAP.get(e.startTime)) ||
+                (TIME_SLOT_TO_INDEX_MAP.get(event.startTime) < TIME_SLOT_TO_INDEX_MAP.get(e.startTime) &&
+                  TIME_SLOT_TO_INDEX_MAP.get(event.endTime) > TIME_SLOT_TO_INDEX_MAP.get(e.startTime)) ||
+                (TIME_SLOT_TO_INDEX_MAP.get(event.startTime) > TIME_SLOT_TO_INDEX_MAP.get(e.startTime) &&
+                  TIME_SLOT_TO_INDEX_MAP.get(event.startTime) < TIME_SLOT_TO_INDEX_MAP.get(e.endTime)))
+
+            ));
+
+            if (event.bookingStatus === 'Confirmed') {
+
+              let marginLeft = 0;
+              let newWidth = 500;
+              if (overlappingEvents.length > 0) {
+                marginLeft = overlappingEvents.length * 200;
+                newWidth = 300
+              }
+              return (
+                <div
+                  key={event.id}
+                  className="event"
+                  tabindex="0"
+                  style={{ ...style, marginLeft: `${marginLeft}px`, width: `${newWidth}px` }}
+                  onClick={() => setUserSelectedOrder(event)}
+                >
+                  <div style={{ display: "inline-block" }}>
+                    <span style={{ fontWeight: "normal" }}> {event.id} |  {event.bookingType} </span>
+                    <br />
+                    <span style={{ fontWeight: "normal" }} > {event.startTime} - {event.endTime} </span>
+                  </div>
+                </div>
+              );
+            } else if (event.bookingStatus === 'Cancelled') {
+
+              let newWidth = 500
+              if (overlappingEvents.length > 0) {
+                newWidth = 200
+              }
+
+              return (
+                <div
+                  key={event.id}
+                  className="event-cancelled"
+                  tabindex="0"
+                  style={{ ...style, width: `${newWidth}px` }}
+                  onClick={() => setUserSelectedOrder(event)}
+                >
+                  <div style={{ display: "inline-block", maxWidth: "100%" }}>
+                    <span style={{ fontWeight: "normal", display: "inline-block", maxWidth: "100%", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}> {event.id} |  {event.bookingStatus} </span>
+                    <br />
+                    <span style={{ fontWeight: "normal", display: "inline-block", maxWidth: "100%", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}> {event.startTime} - {event.endTime} </span>
+                  </div>
+                </div>
+              );
+            }
+
+          }
         })}
         <div
           className="current-time-cursor"

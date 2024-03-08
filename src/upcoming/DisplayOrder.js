@@ -1,8 +1,11 @@
 import React from 'react';
 import { useState, useEffect } from "react";
 import './DisplayOrder.css'
-import { Button } from 'antd';
+import { Button, Modal } from 'antd';
+import BookingOrderService from '../service/BookingOrderService';
+import { ExclamationCircleFilled } from '@ant-design/icons';
 
+const { confirm } = Modal;
 const DisplayOrder = ({ order }) => {
     const [flip, setFlip] = useState(false);
 
@@ -10,7 +13,59 @@ const DisplayOrder = ({ order }) => {
         // Update the document title using the browser API
         console.log("Display order");
         setFlip(!flip)
+
     }, [order]);
+
+    const showDeleteConfirm = (order) => {
+        confirm({
+            title: 'Are you sure cancel this order ?',
+            icon: <ExclamationCircleFilled />,
+            content: (
+                <div>
+                    <div className='bookingorder-content'>Order #{order.id}</div>
+                </div>
+            ),
+            okText: 'Yes',
+            okType: 'danger',
+            cancelText: 'No',
+            onOk() {
+                console.log('OK');
+                cancel(order)
+            },
+            onCancel() {
+                console.log('Cancel');
+            },
+        });
+    };
+
+    const cancel = (order) => {
+        console.log("Event Cancel. OrderId. " + order.id);
+
+        BookingOrderService.cancel(order.id)
+            .then((response) => {
+
+                Modal.success({
+                    title: 'Order Cancell Successfull !',
+                    content: (
+                        <div>
+                            <div className='bookingorder-content'>Order #{response.data.id}</div>
+                        </div>
+                    ),
+                });
+            })
+            .catch((error) => {
+                console.log("Failed to cancel order. " + error)
+                Modal.error({
+                    title: 'Failed to Cancel Order',
+                    content: (
+                        <div>
+                            {/* Display the error message */}
+                            {error.message}
+                        </div>
+                    ),
+                });
+            });
+    };
 
     return (
 
@@ -85,10 +140,15 @@ const DisplayOrder = ({ order }) => {
                 </div>
             </div>
             <div className='booking-order-border'></div>
+
+
             <div className='booking-order-actios'>
-                <Button className='cancel'>Cancel Order</Button>
-                <Button className='extend' >Extend Order</Button>
+                <Button disabled={order.bookingStatus === 'Cancelled' ? true : false} className='cancel' onClick={() => showDeleteConfirm(order)} >Cancel Order</Button>
+                <Button disabled={order.bookingStatus === 'Cancelled' ? true : false} className='extend' >Extend Order</Button>
             </div>
+
+
+
         </div >
 
     );

@@ -8,7 +8,7 @@
   max-height: 330px;
   border-radius: 5px;
   /* animation: fadeEffect 2s 2; */
-  animation: fadeIn 2s;
+  animation: fadeIn 1s;
 }
 
 .calendar-scheduler-flip {
@@ -19,7 +19,7 @@
   overflow-y: auto;
   max-height: 330px;
   border-radius: 5px;
-  animation: fadeEffect 2s;
+  animation: fadeEffect 1s;
   /* animation: fadeIn 5s; */
 }
 
@@ -54,7 +54,8 @@
 
 .events-column {
   position: relative;
-  flex: 0 0 500px; /* Fixed width for time column */
+  flex: 0 0 500px;
+  /* Fixed width for time column */
   /* border-right: 1px solid #ccc; */
   /* display: flex; */
   flex-direction: column;
@@ -136,7 +137,8 @@
 
 .current-time-cursor {
   position: absolute;
-  left: 0px; /* Adjust left position to align with the time slots column */
+  left: 0px;
+  /* Adjust left position to align with the time slots column */
   right: 0;
   top: 0;
   height: 2px;
@@ -155,12 +157,15 @@
 }
 
 .calendar-scheduler::-webkit-scrollbar {
-  width: 10px; /* width of the entire scrollbar */
+  width: 10px;
+  /* width of the entire scrollbar */
 }
 
 .calendar-scheduler::-webkit-scrollbar-thumb {
-  background-color: #d1d1d1; /* color of the scroll thumb */
-  border-radius: 10px; /* roundness of the scroll thumb */
+  background-color: #d1d1d1;
+  /* color of the scroll thumb */
+  border-radius: 10px;
+  /* roundness of the scroll thumb */
 }
 
 @keyframes fadeEffect {
@@ -178,6 +183,7 @@
 }
 
 @keyframes fadeIn {
+
   /* 0% { opacity: 0; }
   100% { opacity: 1; } */
   0% {

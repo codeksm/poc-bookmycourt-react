@@ -63,10 +63,24 @@
 
 .event {
   position: absolute;
-  width: 100%;
+  /* width: 100%; */
+  width: 500px;
   background-color: rgb(52, 176, 234);
   /* background-color: #8ccaf4; */
   color: #fff;
+  padding: 5px;
+  cursor: pointer;
+  text-align: left;
+  border-bottom: 2px solid white;
+  margin-left: 250px;
+}
+
+.event-cancelled {
+  position: absolute;
+  width: 100%;
+  background-color: #D7DBDD;
+  /* background-color: #8ccaf4; */
+  color: black;
   padding: 5px;
   cursor: pointer;
   text-align: left;

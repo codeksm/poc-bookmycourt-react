@@ -1,4 +1,4 @@
-import { Button } from "antd";
+import { Button, message } from "antd";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect, memo } from "react";
@@ -20,6 +20,7 @@ uuidv4();
 
 const Badminton = () => {
   const navigate = useNavigate();
+  const [messageApi, contextHolder] = message.useMessage();
   const [selectedSlots, setSelectedSlots] = useState(new Set());
   const [selectedCourt, setSelectedCourt] = useState([]);
   const [currentCourt, setCurrentCourt] = useState("1");
@@ -27,6 +28,8 @@ const Badminton = () => {
   const [booked, setBookedSlots] = useState([]);
   const [reserved, setReservedSlots] = useState([]);
   const [displayDate, setDisplayDate] = useState(dayjs());
+  const pgId = '65d429328f69db0675dba1d3';
+  const sport = 'Badminton'
 
 
   const slides = [
@@ -51,14 +54,14 @@ const Badminton = () => {
   useEffect(() => {
     console.log("I am in badminton");
     const fetchDataSequentially = async () => {
-      await PlaygroundService.getCourts("65d429328f69db0675dba1d3", "Badminton")
+      await PlaygroundService.getCourts(pgId, sport)
         .then((response) => {
           setCourts(response.data);
           setCurrentCourt(response.data[0])
           setSelectedCourt([response.data[0]]);
           console.log("Courts ", response.data);
 
-          BookSlotService.getSlots("65d429328f69db0675dba1d3", "Badminton", response.data[0], displayDate.format('YYYY-MM-DD'))
+          BookSlotService.getSlots(pgId, sport, response.data[0], displayDate.format('YYYY-MM-DD'))
             .then((response) => {
               setBookedSlots(response.data.bSlots);
               setReservedSlots(response.data.rSlots)
@@ -79,7 +82,7 @@ const Badminton = () => {
     // Update the document title using the browser API
     console.log("I am in badminton");
     setSelectedSlots(new Set());
-    BookSlotService.getSlots("65d429328f69db0675dba1d3", "Badminton", currentCourt, displayDate.format('YYYY-MM-DD'))
+    BookSlotService.getSlots(pgId, sport, currentCourt, displayDate.format('YYYY-MM-DD'))
       .then((response) => {
         setBookedSlots(response.data.bSlots);
         setReservedSlots(response.data.rSlots)
@@ -87,8 +90,12 @@ const Badminton = () => {
       })
       .catch((error) => {
         console.log("Error . ", error);
+        messageApi.open({
+          type: 'error',
+          content: 'Failed to load',
+        });
       });
-  }, [displayDate]);
+  }, [displayDate, currentCourt]);
 
   const onClick = () => {
     //setSelectedCard(card);
@@ -128,6 +135,7 @@ const Badminton = () => {
 
   return (
     <>
+      {contextHolder}
       <Button className="backbutton" onClick={onClick}>
         Go back
       </Button>
@@ -184,6 +192,8 @@ const Badminton = () => {
             </Button>
           </div>
           <BookingPanel
+            pgId={pgId}
+            sport={sport}
             displayDate={displayDate}
             selectedKeys={selectedSlots}
             selectedCourt={selectedCourt}

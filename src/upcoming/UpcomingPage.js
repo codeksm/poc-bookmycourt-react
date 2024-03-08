@@ -67,7 +67,7 @@ const UpcomingEvents = () => {
       .catch((error) => {
         console.log("Error . ", error);
       });
-  }, [date]);
+  }, [date, currentCourt]);
 
   const onCourtChange = (key) => {
     setCurrentCourt(key);
