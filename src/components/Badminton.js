@@ -157,18 +157,21 @@ const Badminton = () => {
               setDisplayDate={setDisplayDate}
             />
           </div>
-          <Tabs defaultActiveKey="1" centered onChange={onCourtChange}>
-            {courts.map((tab, index) => (
-              <TabPane tab={`Court ${tab}`} key={tab}>
-                <Scheduler
-                  booked={booked}
-                  reserved={reserved}
-                  selectedKeys={selectedSlots}
-                  setSelectedKeys={setSelectedSlots}
-                ></Scheduler>
-              </TabPane>
-            ))}
-          </Tabs>
+          <div className="badminton-courts-tab">
+            <Tabs defaultActiveKey="1" centered onChange={onCourtChange}>
+              {courts.map((tab, index) => (
+                <TabPane tab={`Court ${tab}`} key={tab}>
+                  <Scheduler
+                    booked={booked}
+                    reserved={reserved}
+                    selectedKeys={selectedSlots}
+                    setSelectedKeys={setSelectedSlots}
+                  ></Scheduler>
+                </TabPane>
+              ))}
+            </Tabs>
+          </div>
+
         </div>
 
         <div className="panel2">

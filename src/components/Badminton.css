@@ -10,7 +10,8 @@
 }
 
 .carousel-container {
-  width: 1200px; /* Adjust the width as needed */
+  width: 1200px;
+  /* Adjust the width as needed */
   height: 350px;
   margin: 0;
   padding: 0px;
@@ -51,12 +52,17 @@
 }
 
 .badminton-courts-tab-header {
-  max-width: 630px; /* Adjust the width as needed */
+  max-width: 630px;
+  /* Adjust the width as needed */
   height: 125px;
   margin: 0px;
   padding: 0px;
   border-radius: 10px 10px 0px 0px;
   background-color: none;
+}
+
+.badminton-courts-tab {
+  margin-top: 10px;
 }
 
 .badminton-courts {
@@ -67,10 +73,12 @@
 }
 
 .ant-tabs {
-  background-color: #f8f8f8;
-  /* border-radius: 8px; */
   height: 50px;
   margin: 0;
+  border-color: #d0d7de;
+  border-radius: 6px;
+  border-style: solid;
+  border-width: 1px;
 }
 
 .ant-tabs-tab {
@@ -112,6 +120,7 @@
   font-size: large;
   font-weight: 400;
 }
+
 .date-today {
   font-size: 16px;
   cursor: pointer;

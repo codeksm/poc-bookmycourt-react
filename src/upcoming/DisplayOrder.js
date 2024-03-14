@@ -1,13 +1,14 @@
 import React from 'react';
 import { useState, useEffect } from "react";
 import './DisplayOrder.css'
-import { Button, Modal } from 'antd';
+import { Button, Modal, Select } from 'antd';
 import BookingOrderService from '../service/BookingOrderService';
 import { ExclamationCircleFilled } from '@ant-design/icons';
 
 const { confirm } = Modal;
 const DisplayOrder = ({ order }) => {
     const [flip, setFlip] = useState(false);
+    const [extendDuration, setExtendDuration] = useState(30);
 
     useEffect(() => {
         // Update the document title using the browser API
@@ -15,6 +16,50 @@ const DisplayOrder = ({ order }) => {
         setFlip(!flip)
 
     }, [order]);
+
+    const handleExtendDurationChange = (value) => {
+        console.log(`selected ${value}`);
+        setExtendDuration(value)
+    };
+
+    const showExtendConfirm = (order) => {
+        confirm({
+            title: 'Are you sure extend this order ?',
+            icon: <ExclamationCircleFilled />,
+            content: (
+                <div className='extend-content'>
+                    {/* <div className='bookingorder-content'>Extend Order #{order.id} by 30 min</div> */}
+                    <Select
+                        defaultValue={30}
+                        style={{
+                            width: 120,
+                        }}
+                        onChange={handleExtendDurationChange}
+                        options={[
+                            {
+                                value: 30,
+                                label: '30 min',
+                            },
+                            {
+                                value: 60,
+                                label: '60 min',
+                            },
+                        ]}
+                    />
+                </div>
+            ),
+            okText: 'Yes',
+            okType: 'primary',
+            cancelText: 'No',
+            onOk() {
+                console.log('OK');
+                extend(order)
+            },
+            onCancel() {
+                console.log('Cancel');
+            },
+        });
+    };
 
     const showDeleteConfirm = (order) => {
         confirm({
@@ -36,6 +81,55 @@ const DisplayOrder = ({ order }) => {
                 console.log('Cancel');
             },
         });
+    };
+
+    const print = (order) => {
+        window.print();
+    }
+
+    const extend = (order) => {
+        console.log("Extend Event. OrderId. " + order.id);
+        const lastElement = order.slotIds[order.slotIds.length - 1];
+        const slotElement1 = lastElement + 1;
+        const slotElement2 = lastElement + 2;
+        let newSlots = [slotElement1];
+
+        if (extendDuration === 60) {
+            console.log("Extend by 60 min")
+            newSlots.push(slotElement2);
+        }
+
+        const extendData = {
+            'orderId': order.id,
+            'slotIds': newSlots,
+        }
+
+        console.log("Extend Event. Order. " + JSON.stringify(extendData));
+
+        BookingOrderService.extend(extendData)
+            .then((response) => {
+
+                Modal.success({
+                    title: 'Order Extend Successfull !',
+                    content: (
+                        <div>
+                            <div className='bookingorder-content'>Order #{response.data.id} extended by {extendDuration} minutes</div>
+                        </div>
+                    ),
+                });
+            })
+            .catch((error) => {
+                console.log("Failed to extend order. " + error)
+                Modal.error({
+                    title: 'Failed to Extend Order',
+                    content: (
+                        <div>
+                            {/* Display the error message */}
+                            {error.message}
+                        </div>
+                    ),
+                });
+            });
     };
 
     const cancel = (order) => {
@@ -144,7 +238,8 @@ const DisplayOrder = ({ order }) => {
 
             <div className='booking-order-actios'>
                 <Button disabled={order.bookingStatus === 'Cancelled' ? true : false} className='cancel' onClick={() => showDeleteConfirm(order)} >Cancel Order</Button>
-                <Button disabled={order.bookingStatus === 'Cancelled' ? true : false} className='extend' >Extend Order</Button>
+                <Button disabled={order.bookingStatus === 'Cancelled' ? true : false} className='extend' onClick={() => showExtendConfirm(order)}>Extend Order</Button>
+                <Button disabled={order.bookingStatus === 'Cancelled' ? true : false} className='extend' onClick={() => print(order)}>Print Invoice</Button>
             </div>
 
 

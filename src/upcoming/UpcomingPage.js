@@ -85,13 +85,16 @@ const UpcomingEvents = () => {
               setDisplayDate={setDisplayDate}
             />
           </div>
-          <Tabs defaultActiveKey="1" centered onChange={onCourtChange}>
-            {courts.map((tab, index) => (
-              <TabPane tab={`Court ${tab}`} key={tab}>
-                <OrdersScheduler date={date} court={tab} orders={orders} setUserSelectedOrder={setUserSelectedOrder}> </OrdersScheduler>
-              </TabPane>
-            ))}
-          </Tabs>
+          <div className="upcomingpage-courts-tab">
+            <Tabs defaultActiveKey="1" centered onChange={onCourtChange}>
+              {courts.map((tab, index) => (
+                <TabPane tab={`Court ${tab}`} key={tab}>
+                  <OrdersScheduler date={date} court={tab} orders={orders} setUserSelectedOrder={setUserSelectedOrder}> </OrdersScheduler>
+                </TabPane>
+              ))}
+            </Tabs>
+          </div>
+
         </div>
         <div className="upcomingpage-displayorder">
           {userSelectedOrder && userSelectedOrder.id && (

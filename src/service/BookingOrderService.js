@@ -26,6 +26,12 @@ class BookingOrderService {
       headers: authHeader(),
     });
   }
+
+  extend(data) {
+    return axios.post(`${ORDERS_BASE_URL}/extend`, data, {
+      headers: authHeader(),
+    });
+  }
 }
 
 export default new BookingOrderService();
