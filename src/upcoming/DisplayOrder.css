@@ -70,23 +70,36 @@
 }
 
 
+.booking-order-invoice {
+    height: 30px;
+}
+
+.booking-order-actios {
+    height: 40px;
+    margin-top: 3px;
+}
+
+.invoice {
+    margin: 2px;
+    width: 100%;
+    color: #1aa06d;
+}
+
 .extend {
     width: 48%;
     margin-top: 5px;
     margin-left: 2px;
     float: left;
+    color: #1aa06d;
 }
 
-.extend:hover {
-    /* border-color: white !important;
-    color: #196F3D !important; */
-}
 
 .cancel {
     width: 48%;
     margin-top: 5px;
     margin-left: 2px;
     float: right;
+    color: rgb(203, 79, 21);
 }
 
 @keyframes fadeIn {
