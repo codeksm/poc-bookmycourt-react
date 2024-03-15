@@ -162,6 +162,7 @@ const Badminton = () => {
               {courts.map((tab, index) => (
                 <TabPane tab={`Court ${tab}`} key={tab}>
                   <Scheduler
+                    date={displayDate}
                     booked={booked}
                     reserved={reserved}
                     selectedKeys={selectedSlots}
