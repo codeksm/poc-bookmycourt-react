@@ -12,10 +12,7 @@ import {
 import { Breadcrumb, Layout, Menu, theme } from "antd";
 import Football from "./components/Football";
 const { Header, Content, Sider } = Layout;
-const items1 = ["1", "2", "3"].map((key) => ({
-  key,
-  label: `nav ${key}`,
-}));
+
 const items2 = [UserOutlined, LaptopOutlined, NotificationOutlined].map(
   (icon, index) => {
     const key = String(index + 1);

@@ -3,10 +3,10 @@
   display: flex;
   top: 0;
   bottom: 0;
-  border: 1px solid #ccc;
+  border: 0.06rem solid #ccc;
   overflow-y: auto;
-  max-height: 330px;
-  border-radius: 5px;
+  max-height: 20.625rem;
+  border-radius: 0.3rem;
   /* animation: fadeEffect 2s 2; */
   animation: fadeIn 1s;
 }
@@ -15,16 +15,16 @@
   display: flex;
   top: 0;
   bottom: 0;
-  border: 1px solid #ccc;
+  border: 0.06rem solid #ccc;
   overflow-y: auto;
-  max-height: 330px;
-  border-radius: 5px;
+  max-height: 20.625;
+  border-radius: 0.3rem;
   animation: fadeEffect 1s;
   /* animation: fadeIn 5s; */
 }
 
 .time-column {
-  width: 300px;
+  width: 18.75rem;
   /* display: flex; */
   flex-direction: column;
 }
@@ -34,9 +34,9 @@
   display: flex;
   align-items: flex-end;
   justify-content: center;
-  border-bottom: 1px solid #ccc;
-  border-right: 1px solid #ccc;
-  height: 50px;
+  border-bottom: 0.06rem solid #ccc;
+  border-right: 0.06rem solid #ccc;
+  height: 3.125rem;
 }
 
 .timeslot-legend {
@@ -46,40 +46,28 @@
 
 .timeslot-fieldset {
   /* border: 1px groove #ddd !important; */
-  padding: 18px 23px 23px 23px !important;
+  padding: 1.125rem 1.43rem 1.43rem 1.43rem !important;
   border: none;
-  margin: 0px;
-  font-size: 13px !important;
+  margin: 0rem;
+  font-size: 0.81rem !important;
 }
 
 .events-column {
   position: relative;
-  flex: 0 0 500px;
+  flex: 0 0 31.25rem;
   /* Fixed width for time column */
   /* border-right: 1px solid #ccc; */
   /* display: flex; */
   flex-direction: column;
 }
 
-/* .event {
-  position: absolute;
-  width: 100%;
-  background-color: #3498db;
-  color: #fff;
-  padding: 5px;
-  cursor: pointer;
-  border-radius: 10px;
-  border-color: black;
-  border-style: dashed;
-  border-width: 1px;
-} */
 
 .event-slot {
   display: flex;
   align-items: center;
   justify-content: center;
-  border-bottom: 1px solid #ccc;
-  height: 25px;
+  border-bottom: 0.06rem solid #ccc;
+  height: 1.56rem;
 }
 
 .event-slot-booked {
@@ -88,7 +76,7 @@
   background-color: rgb(52, 176, 234);
   /* background-color: #8ccaf4; */
   color: #fff;
-  padding: 5px;
+  padding: 0.3rem;
   cursor: pointer;
   text-align: center;
   font-family: "Times New Roman", Times, serif;
@@ -101,7 +89,7 @@
   background-color: rgb(52, 176, 234);
   /* background-color: #8ccaf4; */
   color: white;
-  padding: 5px;
+  padding: 0.3rem;
   cursor: pointer;
   text-align: center;
   font-family: "Times New Roman", Times, serif;
@@ -113,7 +101,7 @@
   width: 100%;
   background-color: #6B8E23;
   color: black;
-  padding: 5px;
+  padding: 0.3rem;
   cursor: pointer;
   text-align: center;
   font-family: "Times New Roman", Times, serif;
@@ -126,7 +114,7 @@
   width: 100%;
   background-color: none;
   color: black;
-  padding: 5px;
+  padding: 0.3rem;
   cursor: pointer;
   text-align: center;
   /* justify-content: center; */
@@ -141,7 +129,7 @@
   /* Adjust left position to align with the time slots column */
   right: 0;
   top: 0;
-  height: 2px;
+  height: 0.13rem;
   background-color: #e74c3c;
 }
 
@@ -149,22 +137,22 @@
   content: "";
   display: block;
   position: absolute;
-  top: -3px;
-  width: 8px;
-  height: 8px;
+  top: -0.19rem;
+  width: 0.5rem;
+  height: 0.5rem;
   background-color: #e74c3c;
   border-radius: 50%;
 }
 
 .calendar-scheduler::-webkit-scrollbar {
-  width: 10px;
+  width: 0.6rem;
   /* width of the entire scrollbar */
 }
 
 .calendar-scheduler::-webkit-scrollbar-thumb {
   background-color: #d1d1d1;
   /* color of the scroll thumb */
-  border-radius: 10px;
+  border-radius: 0.6rem;
   /* roundness of the scroll thumb */
 }
 
