@@ -1,6 +1,6 @@
 .badminton {
   display: flex;
-  justify-content: center;
+  /* justify-content: center; */
 }
 
 .backbutton {
@@ -10,7 +10,7 @@
 }
 
 .carousel-container {
-  width: 90vw;
+  width: 70rem;
   /* Adjust the width as needed */
   height: 60vh;
   border-radius: 0.3rem;
@@ -64,7 +64,6 @@
 }
 
 .badminton-courts {
-  margin: 0;
   width: 39.37rem;
   height: auto;
   margin: 0.3rem;
