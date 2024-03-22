@@ -24,7 +24,7 @@
 }
 
 .time-column {
-  width: 18.75rem;
+  width: 23rem;
   /* display: flex; */
   flex-direction: column;
 }
@@ -42,14 +42,15 @@
 .timeslot-legend {
   margin: 0;
   font-size: small;
+  width: 3em;
 }
 
 .timeslot-fieldset {
   /* border: 1px groove #ddd !important; */
-  padding: 1.125rem 1.43rem 1.43rem 1.43rem !important;
+  padding: 2.2em 1.43em 1.43em 1.43em !important;
   border: none;
-  margin: 0rem;
-  font-size: 0.81rem !important;
+  margin: 0em;
+  font-size: 0.81em !important;
 }
 
 .events-column {

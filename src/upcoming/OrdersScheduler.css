@@ -23,7 +23,7 @@
   /* animation: fadeIn 5s; */
 }
 
-.time-column {
+.time-column1 {
   width: 300px;
   /* display: flex; */
   flex-direction: column;
@@ -39,12 +39,12 @@
   height: 50px;
 }
 
-.timeslot-legend {
+.timeslot-legend1 {
   margin: 0;
   font-size: small;
 }
 
-.timeslot-fieldset {
+.timeslot-fieldset1 {
   /* border: 1px groove #ddd !important; */
   padding: 18px 23px 23px 23px !important;
   border: none;

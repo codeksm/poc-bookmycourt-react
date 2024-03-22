@@ -140,13 +140,13 @@ const Badminton = () => {
         Go back
       </Button>
       <div className="carousel-container">
-        <Carousel
+        {/* <Carousel
           className="carousel-item"
           slides={slides}
           goToSlide={0}
           offsetRadius={1}
           showNavigation={true}
-        />
+        /> */}
       </div>
 
       <div className="badminton">
