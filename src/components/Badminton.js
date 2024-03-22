@@ -6,14 +6,13 @@ import Scheduler from "./Scheduler";
 import BookingPanel from "./BookingPanel";
 import "./Badminton.css";
 import dayjs from "dayjs";
-import { Tabs } from "antd";
-// import { Carousel } from "3d-react-carousal";
-import Carousel from "react-spring-3d-carousel";
+import { Tabs, Carousel } from "antd";
 import CustomCalendar from "./CustomCalendar";
 import { v4 as uuidv4 } from "uuid";
 import CourtSelection from "./CourtSelection";
 import PlaygroundService from "../service/PlaygroundService";
 import BookSlotService from "../service/BookSlotService";
+import { LeftOutlined } from "@ant-design/icons";
 
 const { TabPane } = Tabs;
 uuidv4();
@@ -30,6 +29,12 @@ const Badminton = () => {
   const [displayDate, setDisplayDate] = useState(dayjs());
   const pgId = '65d429328f69db0675dba1d3';
   const sport = 'Badminton'
+
+  const contentStyle = {
+    width: '100%', // Ensure the image fills the full width of its parent container
+    height: '100%', // Maintain aspect ratio by setting height to 100%
+    objectFit: 'cover',
+  };
 
 
   const slides = [
@@ -137,16 +142,25 @@ const Badminton = () => {
     <>
       {contextHolder}
       <Button className="backbutton" onClick={onClick}>
-        Go back
+        <LeftOutlined />
       </Button>
       <div className="carousel-container">
-        {/* <Carousel
-          className="carousel-item"
-          slides={slides}
-          goToSlide={0}
-          offsetRadius={1}
-          showNavigation={true}
-        /> */}
+
+        <Carousel className="carousel" effect="fade">
+          <div className="carousel1">
+            {/* <h3 style={contentStyle}>1</h3> */}
+            <img style={contentStyle} src="https://picsum.photos/800/300/?random" alt="1" />
+          </div>
+          <div className="carousel2">
+            <img style={contentStyle} src="https://picsum.photos/800/301/?random" alt="2" />
+          </div>
+          <div className="carousel3">
+            <img style={contentStyle} src="https://picsum.photos/800/302/?random" alt="3" />
+          </div>
+          <div className="carousel4">
+            <img style={contentStyle} src="https://picsum.photos/800/303/?random" alt="4" />
+          </div>
+        </Carousel>
       </div>
 
       <div className="badminton">

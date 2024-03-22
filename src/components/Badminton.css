@@ -7,6 +7,8 @@
   margin: 0;
   position: absolute;
   z-index: 10;
+  opacity: 0.5;
+  border-radius: 50%;
 }
 
 
@@ -126,13 +128,6 @@
 }
 
 
-.panel2 {
-  /* max-width: 21.87rem;
-  margin-left: 1.87rem; */
-  width: 100%;
-  /* width: 170vw; */
-  margin-bottom: 0.3rem;
-}
 
 .options-button {
   margin-top: 0.3rem;
@@ -143,13 +138,24 @@
 }
 
 
+
+
+
 @media only screen and (min-width : 768px) {
   .carousel-container {
     width: 100%;
-    height: 40vh;
+    height: 50vh;
     border-radius: 0.3rem;
     margin-bottom: 0.2rem;
-    background-color: blueviolet;
+    margin-bottom: 0.6rem;
+  }
+
+  .carousel1,
+  .carousel2,
+  .carousel3,
+  .carousel4 {
+    width: 100%;
+    height: 50vh;
   }
 
   .badminton {
@@ -175,6 +181,19 @@
     height: 30vh;
     border-radius: 0.3rem;
     margin-bottom: 0.2rem;
-    background-color: rgb(14, 222, 80);
   }
+
+  .carousel1,
+  .carousel2,
+  .carousel3,
+  .carousel4 {
+    width: 100%;
+    height: 30vh;
+  }
+
+  .panel2 {
+    width: 100%;
+    margin-bottom: 0.3rem;
+  }
+
 }
