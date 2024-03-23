@@ -36,7 +36,7 @@
   justify-content: center;
   border-bottom: 0.06rem solid #ccc;
   border-right: 0.06rem solid #ccc;
-  height: 3.125rem;
+  height: 3rem;
 }
 
 .timeslot-legend {
@@ -68,7 +68,7 @@
   align-items: center;
   justify-content: center;
   border-bottom: 0.06rem solid #ccc;
-  height: 1.56rem;
+  height: 1.5rem;
 }
 
 .event-slot-booked {

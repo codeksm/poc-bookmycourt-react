@@ -7,9 +7,9 @@ import dayjs from "dayjs";
 
 
 /*
-30 min slot == 25 px
-60 min slot == 50 px
-1 min == 0.83 px
+30 min slot == 1.5 rem
+60 min slot == 3 rem
+1 min == 0.05 rem
 */
 const Scheduler = ({ date, booked, reserved, selectedKeys, setSelectedKeys }) => {
   const timeSlots = Array.from({ length: 24 }, (_, index) => index + 1); // 24 hours
@@ -39,8 +39,8 @@ const Scheduler = ({ date, booked, reserved, selectedKeys, setSelectedKeys }) =>
 
     if (dayjs(date).isSame(currentDate, "day")) {
       let time = new Date();
-      let timeOffset = (time.getHours() - 1) * 50 + time.getMinutes() * 0.83;
-      if ((eventSlotKey - 1) * 25 + 25 > timeOffset) {
+      let timeOffset = (time.getHours() - 1) * 3 + time.getMinutes() * 0.05;
+      if ((eventSlotKey - 1) * 1.5 + 1.5 > timeOffset) {
         setSelectedKeys((prevSelectedKeys) => {
           const newSelectedKeys = new Set(prevSelectedKeys);
           if (newSelectedKeys.has(eventSlotKey)) {
@@ -93,8 +93,8 @@ const Scheduler = ({ date, booked, reserved, selectedKeys, setSelectedKeys }) =>
                 key={eventSlotKey}
                 className="event-slot-booked"
                 style={{
-                  top: `${(eventSlotKey - 1) * 25}px`,
-                  height: `${1 * 25}px`,
+                  top: `${(eventSlotKey - 1) * 1.5}rem`,
+                  height: `${1 * 1.5}rem`,
                 }}
                 onClick={() => handleEventClick(eventSlotKey)}
               >
@@ -107,8 +107,8 @@ const Scheduler = ({ date, booked, reserved, selectedKeys, setSelectedKeys }) =>
                 key={eventSlotKey}
                 className="event-slot-reserved"
                 style={{
-                  top: `${(eventSlotKey - 1) * 25}px`,
-                  height: `${1 * 25}px`,
+                  top: `${(eventSlotKey - 1) * 1.5}rem`,
+                  height: `${1 * 1.5}rem`,
                 }}
                 onClick={() => handleEventClick(eventSlotKey)}
               >
@@ -124,8 +124,8 @@ const Scheduler = ({ date, booked, reserved, selectedKeys, setSelectedKeys }) =>
                   : "event-slot-available-not-selected"
                   }`}
                 style={{
-                  top: `${(eventSlotKey - 1) * 25}px`,
-                  height: `${1 * 25}px`,
+                  top: `${(eventSlotKey - 1) * 1.5}rem`,
+                  height: `${1 * 1.5}rem`,
                   color: selectedKeys.has(eventSlotKey) ? "white" : "",
                 }}
                 onClick={() => handleAvailableEventClick(eventSlotKey)}
@@ -139,9 +139,9 @@ const Scheduler = ({ date, booked, reserved, selectedKeys, setSelectedKeys }) =>
         <div
           className="current-time-cursor"
           style={{
-            top: `${(currentTime.getHours() - 1) * 50 +
-              currentTime.getMinutes() * 0.83
-              }px`,
+            top: `${(currentTime.getHours() - 1) * 3 +
+              currentTime.getMinutes() * 0.05
+              }rem`,
           }}
         ></div>
       </div>

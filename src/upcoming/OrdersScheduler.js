@@ -56,11 +56,11 @@ const OrdersScheduler = ({ date, court, orders, setUserSelectedOrder }) => {
         ))}
 
         {orders.map((event, index) => {
-          const topPosition = (TIME_SLOT_TO_INDEX_MAP.get(event.startTime) - 1) * 25;
-          const height = (TIME_SLOT_TO_INDEX_MAP.get(event.endTime) - TIME_SLOT_TO_INDEX_MAP.get(event.startTime)) * 25;
+          const topPosition = (TIME_SLOT_TO_INDEX_MAP.get(event.startTime) - 1) * 1.5;
+          const height = (TIME_SLOT_TO_INDEX_MAP.get(event.endTime) - TIME_SLOT_TO_INDEX_MAP.get(event.startTime)) * 1.5;
           const style = {
-            top: `${topPosition}px`,
-            height: `${height}px`,
+            top: `${topPosition}rem`,
+            height: `${height}rem`,
           };
 
           // setSlotElements(updatedSlotElements)
@@ -129,9 +129,9 @@ const OrdersScheduler = ({ date, court, orders, setUserSelectedOrder }) => {
         <div
           className="current-time-cursor"
           style={{
-            top: `${(currentTime.getHours() - 1) * 50 +
-              currentTime.getMinutes() * 0.83
-              }px`,
+            top: `${(currentTime.getHours() - 1) * 3 +
+              currentTime.getMinutes() * 0.05
+              }rem`,
           }}
         ></div>
       </div>

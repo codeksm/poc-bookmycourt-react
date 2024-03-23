@@ -5,8 +5,8 @@
   bottom: 0;
   border: 1px solid #ccc;
   overflow-y: auto;
-  max-height: 330px;
-  border-radius: 5px;
+  max-height: 20rem;
+  border-radius: 0.3rem;
   /* animation: fadeEffect 2s 2; */
   animation: fadeIn 2s;
 }
@@ -17,14 +17,14 @@
   bottom: 0;
   border: 1px solid #ccc;
   overflow-y: auto;
-  max-height: 330px;
-  border-radius: 5px;
+  max-height: 20rem;
+  border-radius: 0.3rem;
   animation: fadeEffect 2s;
   /* animation: fadeIn 5s; */
 }
 
-.time-column1 {
-  width: 300px;
+.time-column {
+  width: 20rem;
   /* display: flex; */
   flex-direction: column;
 }
@@ -36,43 +36,51 @@
   justify-content: center;
   border-bottom: 1px solid #ccc;
   border-right: 1px solid #ccc;
-  height: 50px;
+  height: 3rem;
 }
 
-.timeslot-legend1 {
+.timeslot-legend {
   margin: 0;
   font-size: small;
 }
 
-.timeslot-fieldset1 {
+.timeslot-fieldset {
   /* border: 1px groove #ddd !important; */
-  padding: 18px 23px 23px 23px !important;
+  padding: 2.0em 1.43em 1.43em 1.43em !important;
   border: none;
-  margin: 0px;
-  font-size: 13px !important;
+  margin: 0em;
+  font-size: 0.81em !important;
 }
 
 .events-column {
   position: relative;
-  flex: 0 0 500px;
+  flex: 0 0 31.25rem;
   /* Fixed width for time column */
   /* border-right: 1px solid #ccc; */
   /* display: flex; */
   flex-direction: column;
 }
 
+.event-slot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 0.06rem solid #ccc;
+  height: 1.6rem;
+}
+
+
 .event {
   position: absolute;
   /* width: 100%; */
-  width: 500px;
+  width: 31rem;
   background-color: rgb(52, 176, 234);
   /* background-color: #8ccaf4; */
   color: #fff;
-  padding: 5px;
+  padding: 0.3rem;
   cursor: pointer;
   text-align: left;
   border-bottom: 2px solid white;
-  margin-left: 250px;
 }
 
 .event-cancelled {
@@ -81,7 +89,7 @@
   background-color: #D7DBDD;
   /* background-color: #8ccaf4; */
   color: black;
-  padding: 5px;
+  padding: 0.3rem;
   cursor: pointer;
   text-align: left;
   border-bottom: 2px solid white;
@@ -89,7 +97,7 @@
 
 .event:focus {
   /* background-color: black; */
-  border-left: 7px solid rgb(24, 115, 185);
+  border-left: 0.4rem solid rgb(24, 115, 185);
 }
 
 .event-slot {
@@ -97,17 +105,17 @@
   align-items: center;
   justify-content: center;
   border-bottom: 1px solid #ccc;
-  height: 25px;
+  height: 1.5rem;
 }
 
 
 .current-time-cursor {
   position: absolute;
-  left: 0px;
+  left: 0;
   /* Adjust left position to align with the time slots column */
   right: 0;
   top: 0;
-  height: 2px;
+  height: 0.12rem;
   background-color: #e74c3c;
 }
 
@@ -115,22 +123,22 @@
   content: "";
   display: block;
   position: absolute;
-  top: -3px;
-  width: 8px;
-  height: 8px;
+  top: -0.18rem;
+  width: 0.5rem;
+  height: 0.5rem;
   background-color: #e74c3c;
   border-radius: 50%;
 }
 
 .calendar-scheduler::-webkit-scrollbar {
-  width: 10px;
+  width: 0.6rem;
   /* width of the entire scrollbar */
 }
 
 .calendar-scheduler::-webkit-scrollbar-thumb {
   background-color: #d1d1d1;
   /* color of the scroll thumb */
-  border-radius: 10px;
+  border-radius: 0.6rem;
   /* roundness of the scroll thumb */
 }
 
