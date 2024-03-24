@@ -8,7 +8,7 @@
   max-height: 20rem;
   border-radius: 0.3rem;
   /* animation: fadeEffect 2s 2; */
-  animation: fadeIn 2s;
+  animation: fadeIn 1s;
 }
 
 .calendar-scheduler-flip {
@@ -19,7 +19,7 @@
   overflow-y: auto;
   max-height: 20rem;
   border-radius: 0.3rem;
-  animation: fadeEffect 2s;
+  animation: fadeEffect 1s;
   /* animation: fadeIn 5s; */
 }
 
@@ -147,8 +147,16 @@
     opacity: 0;
   }
 
+  25% {
+    opacity: 0.3;
+  }
+
   50% {
     opacity: 0.5;
+  }
+
+  75% {
+    opacity: 0.7;
   }
 
   100% {
@@ -158,14 +166,20 @@
 
 @keyframes fadeIn {
 
-  /* 0% { opacity: 0; }
-  100% { opacity: 1; } */
   0% {
     opacity: 0;
   }
 
+  25% {
+    opacity: 0.3;
+  }
+
   50% {
     opacity: 0.5;
+  }
+
+  75% {
+    opacity: 0.7;
   }
 
   100% {
