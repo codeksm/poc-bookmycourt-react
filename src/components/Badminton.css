@@ -1,23 +1,18 @@
 .badminton {
-  display: flex;
-  justify-content: center;
+  display: inline;
+  /* justify-content: center; */
 }
 
 .backbutton {
   margin: 0;
   position: absolute;
   z-index: 10;
+  opacity: 0.5;
+  width: 2rem;
+  border-radius: 50%;
 }
 
-.carousel-container {
-  width: 1200px;
-  /* Adjust the width as needed */
-  height: 350px;
-  margin: 0;
-  padding: 0px;
-  border-radius: 5px;
-  margin: 5px;
-}
+
 
 .css-1fzpoyk:nth-of-type(1) {
   transform: translateY(-50%) translateX(-50%) scale(0.7) !important;
@@ -29,20 +24,20 @@
 }
 
 .css-1fzpoyk:nth-of-type(3) img {
-  height: 400px !important;
+  height: 70vh !important;
   object-fit: cover;
 }
 
 .css-1fzpoyk:nth-of-type(1) img {
-  height: 400px !important;
+  height: 70vh !important;
   object-fit: cover;
 }
 
 .css-1qzevvg {
-  margin: 1px 500px 0px !important;
-  height: 10px !important;
-  padding: 0px;
-  top: -15px;
+  margin: 0.06rem 30rem 0px !important;
+  height: 0.6rem !important;
+  padding: 0rem;
+  top: -0.9rem;
   z-index: 10;
 }
 
@@ -52,40 +47,41 @@
 }
 
 .badminton-courts-tab-header {
-  max-width: 630px;
+  max-width: 39.37rem;
   /* Adjust the width as needed */
-  height: 125px;
-  margin: 0px;
-  padding: 0px;
-  border-radius: 10px 10px 0px 0px;
+  height: 7.8rem;
+  margin: 0rem;
+  padding: 0rem;
+  border-radius: 0.6rem 0.6rem 0rem 0rem;
   background-color: none;
 }
 
 .badminton-courts-tab {
-  margin-top: 10px;
+  margin-top: 0.6rem;
+  height: 25rem;
 }
 
 .badminton-courts {
-  margin: 0;
-  width: 630px;
+  /* width: 39.37rem; */
+  width: 100%;
   height: auto;
-  margin: 5px;
+  /* margin: 0.3rem; */
 }
 
 .ant-tabs {
-  height: 50px;
-  margin: 0;
+  height: 3.12rem;
+  margin: 0rem;
   border-color: #d0d7de;
-  border-radius: 6px;
+  border-radius: 0.4rem;
   border-style: solid;
-  border-width: 1px;
+  border-width: 0.06rem;
 }
 
 .ant-tabs-tab {
   color: #333;
-  border: 1px solid #e8e8e8;
+  border: 0.06rem solid #e8e8e8;
   background-color: #fff;
-  border-radius: 8px 8px 0 0;
+  border-radius: 0.5rem 0.5rem 0 0;
   margin-right: 0;
 }
 
@@ -101,100 +97,104 @@
 
 .ant-tabs-content {
   /* padding: 16px; */
-  border: 1px solid #e8e8e8;
-  border-radius: 5px;
+  border: 0.06rem solid #e8e8e8;
+  border-radius: 0.3rem;
 }
 
 /* Optional: Add space between tabs for better readability */
 .ant-tabs-tab {
-  margin-right: 8px;
+  margin-right: 0.5rem;
 }
 
 .date-month {
-  font-size: 16px;
+  font-size: 1rem;
   cursor: pointer;
-  border-radius: 4px;
+  border-radius: 0.3rem;
   float: left;
-  margin-left: 10px;
-  margin-top: 5px;
+  margin-left: 0.6rem;
+  margin-top: 0.3rem;
   font-size: large;
   font-weight: 400;
 }
 
 .date-today {
-  font-size: 16px;
+  font-size: 1rem;
   cursor: pointer;
-  border-radius: 4px;
+  border-radius: 0.3rem;
   float: right;
-  margin-right: 20px;
-  margin-top: 5px;
+  margin-right: 1.3rem;
+  margin-top: 0.3rem;
   font-size: large;
   font-weight: 400;
 }
 
 
-.popover-content {
-  width: 350px;
-  height: 350px;
-  padding: 10px;
-}
-
-.calendar {
-  max-height: 350px;
-  max-width: 350px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  border-radius: 4px;
-  /* z-index: -10; */
-}
-
-.ant-popover-content,
-.ant-popover {
-  z-index: 0 !important;
-}
-
-.ant-fullcalendar {
-  border: none;
-}
-
-.ant-fullcalendar-header {
-  background-color: #001529;
-  color: #fff;
-}
-
-.ant-fullcalendar-select {
-  color: #001529;
-}
-
-.ant-fullcalendar-select:focus,
-.ant-fullcalendar-select:hover {
-  color: #fff;
-}
-
-.ant-fullcalendar-value {
-  color: #001529;
-}
-
-.ant-fullcalendar-footer {
-  border-top: 1px solid #d9d9d9;
-}
-
-.ant-fullcalendar-footer-btn {
-  color: #1890ff;
-}
-
-.ant-fullcalendar-footer-extra {
-  color: #f5222d;
-}
-
-.panel2 {
-  max-width: 350px;
-  margin-left: 30px;
-}
 
 .options-button {
-  margin-top: 5px;
+  margin-top: 0.3rem;
 }
 
 .options-button-clear {
-  margin-left: 5px;
+  margin-left: 0.3rem;
+}
+
+
+
+
+
+@media only screen and (min-width : 768px) {
+  .carousel-container {
+    width: 100%;
+    height: 50vh;
+    border-radius: 0.3rem;
+    margin-bottom: 0.2rem;
+    margin-bottom: 0.6rem;
+  }
+
+  .carousel1,
+  .carousel2,
+  .carousel3,
+  .carousel4 {
+    width: 100%;
+    height: 50vh;
+  }
+
+  .badminton {
+    display: flex;
+    justify-content: center;
+  }
+
+  .badminton-courts {
+    width: 50%;
+    height: auto;
+  }
+
+  .panel2 {
+    width: 30%;
+    margin-bottom: 0.3rem;
+    margin-left: 2rem;
+  }
+}
+
+@media only screen and (max-width : 768px) {
+  .carousel-container {
+    width: 100%;
+    height: 30vh;
+    border-radius: 0.3rem;
+    margin-bottom: 0.2rem;
+  }
+
+  .carousel1,
+  .carousel2,
+  .carousel3,
+  .carousel4 {
+    width: 100%;
+    height: 30vh;
+  }
+
+  .panel2 {
+    width: 100%;
+    margin-bottom: 0.3rem;
+  }
+
 }

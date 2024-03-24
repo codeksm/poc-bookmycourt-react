@@ -40,11 +40,10 @@ const CustomCalendar = ({ displayDate, setDisplayDate }) => {
         <div
           key={i}
           // className="date-header"
-          className={` ${
-            displayDate.date() === tempDate.date()
-              ? "date-header-clicked"
-              : "date-header"
-          }`}
+          className={` ${displayDate.date() === tempDate.date()
+            ? "date-header-clicked"
+            : "date-header"
+            }`}
           onClick={() => setDisplayDate(tempDate)}
         >
           <span className="date-number">{tempDate.format("DD")}</span>
@@ -66,13 +65,13 @@ const CustomCalendar = ({ displayDate, setDisplayDate }) => {
         </span>
       </div>
       <div className="date-navigation">
-        <LeftOutlined className="left" onClick={() => changeDate(-1)} />
+        <LeftOutlined className="left-nav" onClick={() => changeDate(-1)} />
         <div className="date-headers-container">
           <div className="date-headers" id="sliderList">
             {renderDateHeaders()}
           </div>
         </div>
-        <RightOutlined className="right" onClick={() => changeDate(1)} />
+        <RightOutlined className="right-nav" onClick={() => changeDate(1)} />
       </div>
     </>
   );
