@@ -11,6 +11,7 @@ import {
 } from "@ant-design/icons";
 import { Breadcrumb, Layout, Menu, theme } from "antd";
 import Football from "./components/Football";
+import OrdersTable from "./history/OrdersTable";
 const { Header, Content, Sider } = Layout;
 
 const items2 = [UserOutlined, LaptopOutlined, NotificationOutlined].map(
@@ -62,6 +63,11 @@ const App = () => {
             <span>Up Coming</span>
             <Link to="/upcoming" />
           </Menu.Item>
+          <Menu.Item key="3">
+
+            <span>History</span>
+            <Link to="/history" />
+          </Menu.Item>
         </Menu>
       </Header>
       <Layout>
@@ -96,6 +102,7 @@ const App = () => {
               <Route path="/badminton" element={<Badminton />} />
               <Route path="/football" element={<Football />} />
               <Route path="/upcoming" element={<UpcomingEvents />} />
+              <Route path="/history" element={<OrdersTable />} />
             </Routes>
           </Content>
         </Layout>

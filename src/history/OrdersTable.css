@@ -1,0 +1,28 @@
+.ant-table-thead .ant-table-cell {
+    background-color: #1aa06d !important;
+    color: white !important;
+}
+
+@media only screen and (min-width : 768px) {
+    .orders-history-container {
+        width: 100%;
+        height: 80%;
+    }
+
+    .orders-history-data {
+        max-width: 100%;
+        overflow-x: auto;
+    }
+}
+
+@media only screen and (max-width : 768px) {
+    .orders-history-container {
+        width: 100%;
+        height: 80%;
+    }
+
+    .orders-history-data {
+        max-width: 100%;
+        overflow-x: auto;
+    }
+}
