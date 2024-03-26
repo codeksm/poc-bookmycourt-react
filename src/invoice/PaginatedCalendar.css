@@ -1,0 +1,108 @@
+.pg-date-containerselected {
+
+    width: 4.12em;
+    height: 2.5em;
+    border-radius: 10%;
+    background-color: #1b7fc7;
+    /* background-color: #3498db; */
+    color: #fff;
+    margin-right: 0.2em;
+}
+
+.pg-date-container {
+    width: 4.12em;
+    height: 2.5em;
+    border-radius: 10%;
+    background-color: none;
+    /* background-color: #3498db; */
+    color: #fff;
+    margin-right: 0.2em;
+    border-color: #1b7fc7;
+    border-radius: 0.4rem;
+    border-style: solid;
+    border-width: 0.06rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.pg-dateselected {
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    color: white;
+    font-size: large;
+}
+
+.pg-date {
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    color: #1b7fc7;
+    font-size: large;
+}
+
+.pg-dayselected {
+    font-size: 0.8rem;
+    color: white;
+    justify-content: center;
+
+}
+
+.pg-day {
+    font-size: 0.8rem;
+    color: #1b7fc7;
+    justify-content: center;
+
+}
+
+.ant-pagination {
+    margin-left: 1.5rem;
+    margin-top: 1rem;
+}
+
+
+.ant-pagination .ant-pagination-item-active {
+    border-color: white !important;
+    font-weight: bold !important;
+    color: black !important;
+}
+
+.date-dispaly {
+    width: 100%;
+    height: 2.5rem;
+    border-color: #d0d7de;
+    border-radius: 0.4rem;
+    border-style: solid;
+    border-width: 0.06rem;
+    background-color: #f6f8fa;
+}
+
+.currentDate {
+    font-size: large;
+    margin: 0.3rem;
+    float: left;
+    margin-left: 0.6rem;
+}
+
+.today {
+    text-align: center;
+    justify-content: center;
+    font-size: large;
+    margin: 0.3rem;
+    float: right;
+    cursor: pointer;
+    margin-right: 0.6rem;
+}
+
+.pagination-date {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.6rem;
+    margin-top: 0.6rem;
+    border-color: #d0d7de;
+    border-radius: 0.4rem;
+    border-style: solid;
+    border-width: 0.06rem;
+    height: 50%;
+    width: 100%;
+}

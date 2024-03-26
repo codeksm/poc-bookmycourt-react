@@ -12,44 +12,10 @@
   /* border-radius: 90%; */
 }
 
-
-
-.css-1fzpoyk:nth-of-type(1) {
-  transform: translateY(-50%) translateX(-50%) scale(0.7) !important;
-}
-
-.css-1fzpoyk:nth-of-type(3) {
-  left: 75% !important;
-  transform: translateY(-50%) translateX(-50%) scale(0.7) !important;
-}
-
-.css-1fzpoyk:nth-of-type(3) img {
-  height: 70vh !important;
-  object-fit: cover;
-}
-
-.css-1fzpoyk:nth-of-type(1) img {
-  height: 70vh !important;
-  object-fit: cover;
-}
-
-.css-1qzevvg {
-  margin: 0.06rem 30rem 0px !important;
-  height: 0.6rem !important;
-  padding: 0rem;
-  top: -0.9rem;
-  z-index: 10;
-}
-
-.css-1qzevvg img {
-  /* margin: 0px !important; */
-  margin: 0 !important;
-}
-
 .badminton-courts-tab-header {
   max-width: 39.37rem;
   /* Adjust the width as needed */
-  height: 7.8rem;
+  height: 8rem;
   margin: 0rem;
   padding: 0rem;
   border-radius: 0.6rem 0.6rem 0rem 0rem;
@@ -57,7 +23,6 @@
 }
 
 .badminton-courts-tab {
-  margin-top: 0.6rem;
   height: 25rem;
 }
 

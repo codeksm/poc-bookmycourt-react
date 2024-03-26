@@ -13,6 +13,7 @@ import CourtSelection from "./CourtSelection";
 import PlaygroundService from "../service/PlaygroundService";
 import BookSlotService from "../service/BookSlotService";
 import { LeftOutlined } from "@ant-design/icons";
+import FiveDatePagination from "../invoice/PaginatedCalendar";
 
 const { TabPane } = Tabs;
 uuidv4();
@@ -166,10 +167,11 @@ const Badminton = () => {
       <div className="badminton">
         <div className="badminton-courts">
           <div className="badminton-courts-tab-header">
-            <CustomCalendar
+            {/* <CustomCalendar
               displayDate={displayDate}
               setDisplayDate={setDisplayDate}
-            />
+            /> */}
+            <FiveDatePagination currentDate={dayjs()} setDisplayDate={setDisplayDate} />
           </div>
           <div className="badminton-courts-tab">
             <Tabs defaultActiveKey="1" centered onChange={onCourtChange}>

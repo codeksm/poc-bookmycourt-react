@@ -10,6 +10,7 @@ import PlaygroundService from "../service/PlaygroundService";
 import BookingOrderService from "../service/BookingOrderService";
 import './UpcomingPage.css'
 import DisplayOrder from "./DisplayOrder";
+import FiveDatePagination from "../invoice/PaginatedCalendar";
 
 const { TabPane } = Tabs;
 
@@ -80,10 +81,11 @@ const UpcomingEvents = () => {
       <div className="upcomingpage">
         <div className="upcomingpage-courts">
           <div className="upcomingpage-courts-tab-header">
-            <CustomCalendar
+            {/* <CustomCalendar
               displayDate={date}
               setDisplayDate={setDisplayDate}
-            />
+            /> */}
+            <FiveDatePagination currentDate={dayjs()} setDisplayDate={setDisplayDate} />
           </div>
           <div className="upcomingpage-courts-tab">
             <Tabs defaultActiveKey="1" centered onChange={onCourtChange}>

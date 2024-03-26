@@ -5,15 +5,14 @@
 .upcomingpage-courts-tab-header {
   max-width: 39rem;
   /* Adjust the width as needed */
-  height: 7rem;
+  height: 8rem;
   margin: 0;
   padding: 0;
   border-radius: 0.6rem 0.6rem 0rem 0rem;
-  background-color: none;
 }
 
 .upcomingpage-courts-tab {
-  margin-top: 1.2rem;
+  /* margin-top: 1.2rem; */
   height: 25rem;
 
 }
