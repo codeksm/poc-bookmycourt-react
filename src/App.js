@@ -1,18 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 import PgDashboard from "./pgdashboard/pgDashboard";
 import { Router, Routes, Route, Link } from "react-router-dom";
 import Badminton from "./components/Badminton";
 import UpcomingEvents from "./upcoming/UpcomingPage";
+import LoginPage from "./login/LoginPage"
+import { Avatar, Popover } from 'antd';
+
+import { Layout, Menu, theme } from "antd";
+import Football from "./components/Football";
+import OrdersTable from "./history/OrdersTable";
+import LogOut from "./login/LogOut";
+import './App.css'
 
 import {
   LaptopOutlined,
   NotificationOutlined,
   UserOutlined,
 } from "@ant-design/icons";
-import { Breadcrumb, Layout, Menu, theme } from "antd";
-import Football from "./components/Football";
-import OrdersTable from "./history/OrdersTable";
-const { Header, Content, Sider } = Layout;
+
+const { Header, Content } = Layout;
+
 
 const items2 = [UserOutlined, LaptopOutlined, NotificationOutlined].map(
   (icon, index) => {
@@ -32,60 +39,75 @@ const items2 = [UserOutlined, LaptopOutlined, NotificationOutlined].map(
   }
 );
 const App = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
+
+  const handleLogin = () => {
+    // Logic to handle successful login
+    setIsLoggedIn(true);
+  };
+
+  const content = (
+    <div>
+      <LogOut setIsLoggedIn={setIsLoggedIn}></LogOut>
+    </div>
+  );
+
   return (
 
     <Layout>
-      <Header
-        style={{
-          display: "flex",
-          alignItems: "center",
-        }}
-      >
-        <div className="demo-logo" />
-        <Menu
-          theme="dark"
-          mode="horizontal"
-          defaultSelectedKeys={["1"]}
-          style={{
-            flex: 1,
-            minWidth: 0,
-          }}
-        >
-          <Menu.Item key="1">
-            <span>Dashboard</span>
-            <Link to="/playground" />
-          </Menu.Item>
-          <Menu.Item key="2">
+      {
+        isLoggedIn && (
+          <Header
+            className="header"
+            style={{
+              display: "flex",
+              alignItems: "center",
+              left: '0rem'
+            }}
+          >
+            <div className="demo-logo" />
+            <Menu
+              theme="dark"
+              mode="horizontal"
+              defaultSelectedKeys={["1"]}
+              style={{
+                flex: 1,
+                minWidth: 0,
+              }}
+            >
+              <Menu.Item key="0" >
+                <Popover content={content} trigger="click">
+                  <Avatar size="large" icon={<UserOutlined />} />
+                </Popover>
+              </Menu.Item>
+              <Menu.Item key="1">
+                <span>Dashboard</span>
+                <Link to="/playground" />
+              </Menu.Item>
+              <Menu.Item key="2">
 
-            <span>Up Coming</span>
-            <Link to="/upcoming" />
-          </Menu.Item>
-          <Menu.Item key="3">
+                <span>Up Coming</span>
+                <Link to="/upcoming" />
+              </Menu.Item>
+              <Menu.Item key="3">
 
-            <span>History</span>
-            <Link to="/history" />
-          </Menu.Item>
-        </Menu>
-      </Header>
+                <span>History</span>
+                <Link to="/history" />
+              </Menu.Item>
+            </Menu>
+          </Header>
+        )
+      }
+
       <Layout>
         <Layout
           style={{
             padding: "0 0 0",
           }}
         >
-          {/* <Breadcrumb
-            style={{
-              margin: "16px 0",
-            }}
-          >
-            <Breadcrumb.Item>Home</Breadcrumb.Item>
-            <Breadcrumb.Item>List</Breadcrumb.Item>
-            <Breadcrumb.Item>App</Breadcrumb.Item>
-          </Breadcrumb> */}
-
           <Content
             style={{
               padding: 24,
@@ -95,15 +117,17 @@ const App = () => {
               borderRadius: borderRadiusLG,
             }}
           >
-            {/* <PgDashboard></PgDashboard> */}
-            <Routes>
-              <Route path="/" element={<PgDashboard />} />
-              <Route path="/playground" element={<PgDashboard />}></Route>
-              <Route path="/badminton" element={<Badminton />} />
-              <Route path="/football" element={<Football />} />
-              <Route path="/upcoming" element={<UpcomingEvents />} />
-              <Route path="/history" element={<OrdersTable />} />
-            </Routes>
+            {isLoggedIn ? (
+              <Routes>
+                <Route path="/" element={<LoginPage />} />
+                <Route path="/playground" element={<PgDashboard />}></Route>
+                <Route path="/badminton" element={<Badminton />} />
+                <Route path="/football" element={<Football />} />
+                <Route path="/upcoming" element={<UpcomingEvents />} />
+                <Route path="/history" element={<OrdersTable />} />
+              </Routes>
+            ) : (<LoginPage onLogin={handleLogin} />)}
+
           </Content>
         </Layout>
       </Layout>

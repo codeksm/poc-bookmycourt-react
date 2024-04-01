@@ -30,7 +30,7 @@
     align-items: center;
     border-radius: 5px;
     color: white;
-    font-size: large;
+    font-size: 1.0rem;
 }
 
 .pg-date {
@@ -38,7 +38,7 @@
     align-items: center;
     border-radius: 5px;
     color: #1b7fc7;
-    font-size: large;
+    font-size: 1.0rem;
 }
 
 .pg-dayselected {
@@ -52,6 +52,7 @@
     font-size: 0.8rem;
     color: #1b7fc7;
     justify-content: center;
+
 
 }
 

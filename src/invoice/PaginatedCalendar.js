@@ -12,7 +12,11 @@ const FiveDatePagination = ({ currentDate, setDisplayDate }) => {
 
     useEffect(() => {
         const handleResize = () => {
-            if (window.innerWidth <= 768) {
+            if (window.innerWidth <= 369) {
+                setPageSize(3); // Set pageSize to 1 for mobile screens
+            } else if (window.innerWidth <= 768) {
+                setPageSize(2); // Set pageSize to 1 for mobile screens
+            } else if ((window.innerWidth > 768) && (window.innerWidth < 1225)) {
                 setPageSize(2); // Set pageSize to 1 for mobile screens
             } else {
                 setPageSize(1); // Set default pageSize for larger screens
