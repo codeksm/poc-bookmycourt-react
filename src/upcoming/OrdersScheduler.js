@@ -38,7 +38,7 @@ const OrdersScheduler = ({ date, court, orders, setUserSelectedOrder }) => {
 
   return (
     <div className={flip ? 'calendar-scheduler-flip' : 'calendar-scheduler'} >
-      <div className="time-column">
+      <div className="time-column-orders">
         {timeSlots.map((hour) => (
           <div key={hour} className="time-slot">
             {/* {HOURS_MAP.get(`${hour}:00`)} */}
@@ -50,7 +50,7 @@ const OrdersScheduler = ({ date, court, orders, setUserSelectedOrder }) => {
           </div>
         ))}
       </div>
-      <div className="events-column">
+      <div className="events-column-orders">
         {eventSlots.map((slot) => (
           <div key={slot} className="event-slot"></div>
         ))}
@@ -85,16 +85,27 @@ const OrdersScheduler = ({ date, court, orders, setUserSelectedOrder }) => {
                 marginLeft = overlappingEvents.length * 200;
                 newWidth = 300
               }
+
+              const getClassName = () => {
+                if (event.category === 'Coaching') {
+                  return 'event-coaching';
+                } else if (event.category === 'Tournament') {
+                  return 'event-tournament';
+                } else {
+                  return 'event';
+                }
+              };
+
               return (
                 <div
                   key={event.id}
-                  className="event"
+                  className={getClassName()}
                   tabindex="0"
                   style={{ ...style, marginLeft: `${marginLeft}px`, width: `${newWidth}px` }}
                   onClick={() => setUserSelectedOrder(event)}
                 >
                   <div style={{ display: "inline-block" }}>
-                    <span style={{ fontWeight: "normal" }}> {event.id} |  {event.bookingType} </span>
+                    <span style={{ fontWeight: "normal" }}> {event.id} |  {event.message} </span>
                     <br />
                     <span style={{ fontWeight: "normal" }} > {event.startTime} - {event.endTime} </span>
                   </div>

@@ -23,7 +23,7 @@
   /* animation: fadeIn 5s; */
 }
 
-.time-column {
+.time-column-orders {
   width: 20rem;
   /* display: flex; */
   flex-direction: column;
@@ -52,7 +52,7 @@
   font-size: 0.81em !important;
 }
 
-.events-column {
+.events-column-orders {
   position: relative;
   flex: 0 0 31.25rem;
   /* Fixed width for time column */
@@ -72,10 +72,30 @@
 
 .event {
   position: absolute;
-  /* width: 100%; */
   width: 31rem;
   background-color: rgb(52, 176, 234);
-  /* background-color: #8ccaf4; */
+  color: #fff;
+  padding: 0.3rem;
+  cursor: pointer;
+  text-align: left;
+  border-bottom: 2px solid white;
+}
+
+.event-tournament {
+  position: absolute;
+  width: 31rem;
+  background-color: #a6915c;
+  color: #fff;
+  padding: 0.3rem;
+  cursor: pointer;
+  text-align: left;
+  border-bottom: 2px solid white;
+}
+
+.event-coaching {
+  position: absolute;
+  width: 31rem;
+  background-color: #ad6c94;
   color: #fff;
   padding: 0.3rem;
   cursor: pointer;

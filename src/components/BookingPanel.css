@@ -58,14 +58,19 @@ button:hover {
 .bookingpanel-from,
 .bookingpanel-to,
 .bookingpanel-court,
-.bookingpanel-cost,
-.bookingpanel-type {
-  height: 3em;
+.bookingpanel-cost {
+  height: 2.5em;
   width: 95%;
   padding: 0.6em;
   background-color: white;
   margin-top: 0.6em;
   transition: opacity 0.5s ease-in-out;
+}
+
+.bookingpanel-msg,
+.bookingpanel-type {
+  width: 95%;
+  margin-top: 0.6em;
 }
 
 .bookingpanel-sport.fade-out,

@@ -1,4 +1,4 @@
-import { Button, Select, message, Modal } from "antd";
+import { Button, Select, message, Modal, Input } from "antd";
 import React from "react";
 import { useState, useEffect } from "react";
 import "./BookingPanel.css";
@@ -8,9 +8,12 @@ import ReserveSlotService from "../service/ReserveSlotService";
 const BookingPanel = ({ pgId, sport, displayDate, selectedKeys, selectedCourt }) => {
   const [messageApi, contextHolder] = message.useMessage();
   const [slots, setSlots] = useState([]);
+  const [bookingType, setBookingType] = useState("Default");
+  const [inputMsgValue, setInputMsgValue] = useState('');
   const [isDataChanged, setDataChanged] = useState(false);
   const [isSlotChanged, setSlotChanged] = useState(false);
   const [isCourtChanged, setCourtChanged] = useState(false);
+
 
   useEffect(() => {
     // sort selected slot numbers
@@ -43,7 +46,8 @@ const BookingPanel = ({ pgId, sport, displayDate, selectedKeys, selectedCourt })
       totalAmt: '300.00',
       advancePaid: '0.00',
       balanceAmt: '300.00',
-      message: 'test team',
+      message: inputMsgValue,
+      category: bookingType,
     };
 
     let str = JSON.stringify(data);
@@ -79,7 +83,11 @@ const BookingPanel = ({ pgId, sport, displayDate, selectedKeys, selectedCourt })
   };
 
   const handleBookingType = (value) => {
-    console.log(`selected ${value}`);
+    setBookingType(value)
+  };
+
+  const handleInputMessage = (e) => {
+    setInputMsgValue(e.target.value);
   };
 
   return (
@@ -98,35 +106,6 @@ const BookingPanel = ({ pgId, sport, displayDate, selectedKeys, selectedCourt })
         <span className="bookingpanel-right">
           {displayDate.format("DD-MM-YYYY")}
         </span>
-      </div>
-
-      <div
-        className={`bookingpanel-type ${isSlotChanged ? "fade-out" : "fade-in"
-          }`}
-      >
-        <Select
-          className="bookingtypeSelect"
-          size='small'
-          placeholder="Booking Type"
-          style={{
-            width: '100%',
-          }}
-          onChange={handleBookingType}
-          options={[
-            {
-              value: 'Default',
-              label: 'Default',
-            },
-            {
-              value: 'Coaching',
-              label: 'Coaching',
-            },
-            {
-              value: 'Tournament',
-              label: 'Tournament',
-            },
-          ]}
-        />
       </div>
 
       <div
@@ -168,6 +147,45 @@ const BookingPanel = ({ pgId, sport, displayDate, selectedKeys, selectedCourt })
         >
           <span className="bookingpanel-left">Amount</span>
           <span className="bookingpanel-right">400.00</span>
+        </div>
+      )}
+
+      {slots.length > 1 && (
+        <div
+          className={`bookingpanel-type ${isSlotChanged ? "fade-out" : "fade-in"
+            }`}
+        >
+          <Select
+            className="bookingtypeSelect"
+            placeholder="Booking Type"
+            style={{
+              width: '100%',
+            }}
+            onChange={handleBookingType}
+            options={[
+              {
+                value: 'Default',
+                label: 'Default',
+              },
+              {
+                value: 'Coaching',
+                label: 'Coaching',
+              },
+              {
+                value: 'Tournament',
+                label: 'Tournament',
+              },
+            ]}
+          />
+        </div>
+      )}
+
+      {slots.length > 1 && (
+        <div
+          className={`bookingpanel-msg ${isSlotChanged ? "fade-out" : "fade-in"
+            }`}
+        >
+          <Input className="bpanel-msg-input" onChange={handleInputMessage} placeholder="Booking Message (Team John)" />
         </div>
       )}
 

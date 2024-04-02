@@ -23,12 +23,6 @@
   /* animation: fadeIn 5s; */
 }
 
-.time-column {
-  width: 23rem;
-  /* display: flex; */
-  flex-direction: column;
-}
-
 .time-slot {
   /* flex: 1; */
   display: flex;
@@ -51,15 +45,6 @@
   border: none;
   margin: 0em;
   font-size: 0.81em !important;
-}
-
-.events-column {
-  position: relative;
-  flex: 0 0 31.25rem;
-  /* Fixed width for time column */
-  /* border-right: 1px solid #ccc; */
-  /* display: flex; */
-  flex-direction: column;
 }
 
 
@@ -199,5 +184,33 @@
 
   100% {
     opacity: 1;
+  }
+}
+
+@media only screen and (min-width : 768px) {
+  .time-column {
+    width: 10rem;
+    flex-direction: column;
+  }
+
+  .events-column {
+    position: relative;
+    flex: 0 0 27rem;
+    /* flex: 0 0 31.25rem; */
+    flex-direction: column;
+  }
+}
+
+@media only screen and (max-width : 768px) {
+  .time-column {
+    width: 8rem;
+    flex-direction: column;
+  }
+
+  .events-column {
+    position: relative;
+    flex: 0 0 12rem;
+    /* flex: 0 0 31.25rem; */
+    flex-direction: column;
   }
 }
