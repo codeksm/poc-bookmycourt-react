@@ -5,7 +5,7 @@ import "./BookingPanel.css";
 import { TIME_SLOT_MAP } from "../data/hours";
 import ReserveSlotService from "../service/ReserveSlotService";
 
-const BookingPanel = ({ pgId, sport, displayDate, selectedKeys, selectedCourt }) => {
+const BookingPanel = ({ pgId, sport, refresh, setRefresh, displayDate, selectedKeys, selectedCourt }) => {
   const [messageApi, contextHolder] = message.useMessage();
   const [slots, setSlots] = useState([]);
   const [bookingType, setBookingType] = useState("Default");
@@ -56,6 +56,7 @@ const BookingPanel = ({ pgId, sport, displayDate, selectedKeys, selectedCourt })
     ReserveSlotService.book(data)
       .then((response) => {
         console.log("Slot reserved. " + str);
+        setRefresh(!refresh)
         const bookingIds = response.data.map(item => item.id);
         Modal.success({
           title: 'Booking Success!',

@@ -1,4 +1,4 @@
-import { Button, message } from "antd";
+import { Button, message, Breadcrumb } from "antd";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect, memo } from "react";
@@ -7,7 +7,6 @@ import BookingPanel from "./BookingPanel";
 import "./Badminton.css";
 import dayjs from "dayjs";
 import { Tabs, Carousel } from "antd";
-import CustomCalendar from "./CustomCalendar";
 import { v4 as uuidv4 } from "uuid";
 import CourtSelection from "./CourtSelection";
 import PlaygroundService from "../service/PlaygroundService";
@@ -28,6 +27,7 @@ const Badminton = () => {
   const [booked, setBookedSlots] = useState([]);
   const [reserved, setReservedSlots] = useState([]);
   const [displayDate, setDisplayDate] = useState(dayjs());
+  const [refresh, setRefresh] = useState(false);
   const pgId = '65d429328f69db0675dba1d3';
   const sport = 'Badminton'
 
@@ -101,7 +101,7 @@ const Badminton = () => {
           content: 'Failed to load',
         });
       });
-  }, [displayDate, currentCourt]);
+  }, [refresh, displayDate, currentCourt]);
 
   const onClick = () => {
     //setSelectedCard(card);
@@ -139,12 +139,31 @@ const Badminton = () => {
     setSelectedSlots(new Set());
   };
 
+  const handleBreadcrumbClick = (title) => {
+    if (title === 'Aditya Sports Arena') {
+      navigate('/playground');
+    }
+  };
+
   return (
     <>
       {contextHolder}
-      <Button className="backbutton" onClick={onClick}>
+      {/* <Button className="backbutton" onClick={onClick}>
         <LeftOutlined />
-      </Button>
+      </Button> */}
+      <div className="breadcrumb">
+        <Breadcrumb
+          items={[
+            {
+              title: 'Aditya Sports Arena',
+              onClick: () => handleBreadcrumbClick('Aditya Sports Arena'),
+            },
+            {
+              title: 'Badminton',
+            },
+          ]}
+        />
+      </div>
       <div className="carousel-container">
 
         <Carousel className="carousel" effect="fade">
@@ -214,6 +233,8 @@ const Badminton = () => {
           <BookingPanel
             pgId={pgId}
             sport={sport}
+            refresh={refresh}
+            setRefresh={setRefresh}
             displayDate={displayDate}
             selectedKeys={selectedSlots}
             selectedCourt={selectedCourt}

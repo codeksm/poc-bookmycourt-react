@@ -105,7 +105,7 @@ const OrdersScheduler = ({ date, court, orders, setUserSelectedOrder }) => {
                   onClick={() => setUserSelectedOrder(event)}
                 >
                   <div style={{ display: "inline-block" }}>
-                    <span style={{ fontWeight: "normal" }}> {event.id} |  {event.message} </span>
+                    <span style={{ fontWeight: "normal" }}> {event.id} | {event.category} | {event.message} </span>
                     <br />
                     <span style={{ fontWeight: "normal" }} > {event.startTime} - {event.endTime} </span>
                   </div>
