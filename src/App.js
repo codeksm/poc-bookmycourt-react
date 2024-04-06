@@ -10,6 +10,7 @@ import { Layout, Menu, theme } from "antd";
 import Football from "./components/Football";
 import OrdersTable from "./history/OrdersTable";
 import LogOut from "./login/LogOut";
+import Analytics from "./analytics/Analytics";
 import './App.css'
 
 import {
@@ -97,6 +98,10 @@ const App = () => {
                 <span>History</span>
                 <Link to="/history" />
               </Menu.Item>
+              <Menu.Item key="4">
+                <span>Analytics</span>
+                <Link to="/analytics" />
+              </Menu.Item>
             </Menu>
           </Header>
         )
@@ -125,6 +130,7 @@ const App = () => {
                 <Route path="/football" element={<Football />} />
                 <Route path="/upcoming" element={<UpcomingEvents />} />
                 <Route path="/history" element={<OrdersTable />} />
+                <Route path="/analytics" element={<Analytics />} />
               </Routes>
             ) : (<LoginPage onLogin={handleLogin} />)}
 
