@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import "./BookingPanel.css";
 import { TIME_SLOT_MAP } from "../data/hours";
 import ReserveSlotService from "../service/ReserveSlotService";
+import EmailService from "../service/EmailService";
 
 const BookingPanel = ({ pgId, sport, refresh, setRefresh, displayDate, selectedKeys, selectedCourt }) => {
   const [messageApi, contextHolder] = message.useMessage();
@@ -57,6 +58,7 @@ const BookingPanel = ({ pgId, sport, refresh, setRefresh, displayDate, selectedK
       .then((response) => {
         console.log("Slot reserved. " + str);
         setRefresh(!refresh)
+        setInputMsgValue('')
         const bookingIds = response.data.map(item => item.id);
         Modal.success({
           title: 'Booking Success!',
@@ -68,8 +70,29 @@ const BookingPanel = ({ pgId, sport, refresh, setRefresh, displayDate, selectedK
             </div>
           ),
         });
+
+
+        // Assuming orderId is present in the response
+        let emailBody = {
+          to: "manju.manjunath6316@gmail.com",
+          subject: "Order Confirmation !!",
+          orderIds: bookingIds,
+        };
+
+        str = JSON.stringify(emailBody);
+        console.log("email body . " + str);
+
+        EmailService.sendMessage(emailBody)
+          .then(() => {
+            console.log('Email sent successfully.');
+          })
+          .catch(error => {
+            console.error('Error sending email:', error);
+          });
+
       })
       .catch((error) => {
+        setInputMsgValue('')
         console.log("Failed to reserve. " + error)
         Modal.error({
           title: 'Failed to Book',
