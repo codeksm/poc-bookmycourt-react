@@ -16,7 +16,6 @@ const OrdersScheduler = ({ date, court, orders, setUserSelectedOrder }) => {
   const [flip, setFlip] = useState(false);
 
   useEffect(() => {
-    console.log("Hello from order shceduler");
     setFlip(!flip)
   }, [date]);
 
@@ -27,7 +26,6 @@ const OrdersScheduler = ({ date, court, orders, setUserSelectedOrder }) => {
     }, 10000);
 
     return () => clearInterval(intervalId);
-    console.log("Hello from shceduler");
   }, [currentTime]);
 
   const handleEventClick = (eventSlotKey) => {

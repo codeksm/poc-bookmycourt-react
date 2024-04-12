@@ -3,7 +3,8 @@ import authHeader from "./AuthHeader";
 
 
 
-const ORDERS_BASE_URL = "http://localhost:8080/api/orders";
+// const ORDERS_BASE_URL = "http://localhost:8080/api/orders";
+const ORDERS_BASE_URL = "http://192.168.1.4:8080/api/orders";
 
 class BookingOrderService {
 
@@ -33,7 +34,7 @@ class BookingOrderService {
         endDate: endDate,
         sport: sport,
         phone: phone,
-        size: 15,
+        size: 100,
         page: 1,
       },
       headers: authHeader(),

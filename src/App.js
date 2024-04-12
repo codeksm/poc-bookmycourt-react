@@ -19,7 +19,7 @@ import {
   UserOutlined,
 } from "@ant-design/icons";
 
-const { Header, Content } = Layout;
+const { Header, Content, Footer } = Layout;
 
 
 const items2 = [UserOutlined, LaptopOutlined, NotificationOutlined].map(
@@ -136,6 +136,7 @@ const App = () => {
 
           </Content>
         </Layout>
+        <Footer style={{ textAlign: 'center', backgroundColor: '#001529', color: 'white', position: 'fixed', width: '100%', bottom: 0, height: '0.5em' }}>SportSea</Footer>
       </Layout>
     </Layout>
 

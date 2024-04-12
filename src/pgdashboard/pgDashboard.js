@@ -19,11 +19,9 @@ const PgDashboard = () => {
   };
 
   useEffect(() => {
-    console.log("Im in pg dashboard");
     PlaygroundService.getPgById("65d429328f69db0675dba1d3")
       .then((response) => {
         setPlayGroundDto(response.data);
-        console.log("Pg  ", response.data);
       })
       .catch((error) => {
         console.log("Error . ", error);
@@ -33,7 +31,6 @@ const PgDashboard = () => {
   const renderBackgroundImage = (sport) => {
     switch (sport) {
       case 'Badminton':
-        console.log("Badminton imageee")
         return require('../images/badminton.jpg'); // Adjust the path as needed
       case 'Football':
         return require('../images/footBall.jpg'); // Adjust the path as needed

@@ -1,9 +1,7 @@
 import axios from "axios";
 import authHeader from "./AuthHeader";
 
-
-
-const BOOKSLOT_BASE_URL = "http://localhost:8080/api/book";
+const BOOKSLOT_BASE_URL = "http://192.168.1.4:8080/api/book";
 
 class BookSlotService {
 

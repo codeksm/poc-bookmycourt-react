@@ -12,10 +12,7 @@ const DisplayOrder = ({ order }) => {
     const [extendDuration, setExtendDuration] = useState(30);
 
     useEffect(() => {
-        // Update the document title using the browser API
-        console.log("Display order");
         setFlip(!flip)
-
     }, [order]);
 
     const handleExtendDurationChange = (value) => {

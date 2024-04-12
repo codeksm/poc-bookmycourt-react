@@ -77,8 +77,8 @@ const LoginForm = ({ onLogin }) => {
                 </Form.Item>
 
                 <Form.Item className="login-submit">
-                    <Button type="primary" htmlType="submit" loading={loading}>
-                        Log in
+                    <Button type="primary" htmlType="submit" loading={loading} style={{ width: '100%' }}>
+                        Sign In
                     </Button>
                 </Form.Item>
             </Form>

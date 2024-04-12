@@ -65,13 +65,11 @@ const Badminton = () => {
           setCourts(response.data);
           setCurrentCourt(response.data[0])
           setSelectedCourt([response.data[0]]);
-          console.log("Courts ", response.data);
 
           BookSlotService.getSlots(pgId, sport, response.data[0], displayDate.format('YYYY-MM-DD'))
             .then((response) => {
               setBookedSlots(response.data.bSlots);
               setReservedSlots(response.data.rSlots)
-              console.log("Slots  ", response.data);
             })
             .catch((error) => {
               console.log("Error . ", error);
@@ -85,14 +83,11 @@ const Badminton = () => {
   }, []);
 
   useEffect(() => {
-    // Update the document title using the browser API
-    console.log("I am in badminton");
     setSelectedSlots(new Set());
     BookSlotService.getSlots(pgId, sport, currentCourt, displayDate.format('YYYY-MM-DD'))
       .then((response) => {
         setBookedSlots(response.data.bSlots);
         setReservedSlots(response.data.rSlots)
-        console.log("Slots  ", response.data);
       })
       .catch((error) => {
         console.log("Error . ", error);
@@ -125,7 +120,6 @@ const Badminton = () => {
     if (sortedArray.length === 2) {
       const startSlot = sortedArray[0];
       const endSlot = sortedArray[1];
-      console.log("Range start " + startSlot + ", end " + endSlot);
 
       for (let slotKey = startSlot + 1; slotKey < endSlot; slotKey++) {
         if (!booked.includes(slotKey) && !reserved.includes(slotKey)) {

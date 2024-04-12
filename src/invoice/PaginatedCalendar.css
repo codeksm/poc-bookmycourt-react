@@ -97,7 +97,7 @@
 
 .pagination-date {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     margin-bottom: 0.6rem;
     margin-top: 0.6rem;
     border-color: #d0d7de;

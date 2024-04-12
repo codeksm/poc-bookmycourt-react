@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Table, DatePicker, Input, Select, Modal, Button } from 'antd';
+import { Table, DatePicker, Input, Select, Modal, Button, Spin } from 'antd';
 import BookingOrderService from '../service/BookingOrderService';
 import './OrdersTable.css'
 import { DownloadOutlined } from '@ant-design/icons';
@@ -9,6 +9,7 @@ const { Option } = Select;
 
 const OrdersTable = ({ }) => {
   const [orders, setOrders] = useState([])
+  const [loading, setLoading] = useState(true);
   const [filters, setFilters] = useState({
     bookingStatus: null,
     bookingType: null,
@@ -20,16 +21,15 @@ const OrdersTable = ({ }) => {
   });
 
   useEffect(() => {
-    // Update the document title using the browser API
-    console.log("I am in up coming orders");
-
+    setLoading(true);
     BookingOrderService.getAllOrders("65d429328f69db0675dba1d3", 'Badminton', null, null, null, null, null, null)
       .then((response) => {
         setOrders(response.data.content);
-        console.log("Orders size  ", response.data.content.length);
+        setLoading(false);
       })
       .catch((error) => {
         console.log("Error . ", error);
+        setLoading(false);
       });
   }, []);
 
@@ -208,11 +208,13 @@ const OrdersTable = ({ }) => {
         />
       </div>
       <div className='orders-history-data'>
-        <Table size='small' columns={columns} dataSource={filteredOrders} pagination={{
-          pageSize: 5 // Set the number of rows per page
-        }} onRow={(record) => ({
-          onClick: () => handleRowClick(record),
-        })} />
+        <Spin spinning={loading} size="large">
+          <Table size='small' columns={columns} dataSource={filteredOrders} pagination={{
+            pageSize: 5 // Set the number of rows per page
+          }} onRow={(record) => ({
+            onClick: () => handleRowClick(record),
+          })} />
+        </Spin>
       </div>
     </div>
   );

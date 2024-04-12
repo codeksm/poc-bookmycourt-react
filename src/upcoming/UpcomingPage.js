@@ -24,25 +24,19 @@ const UpcomingEvents = () => {
   const [date, setDisplayDate] = useState(dayjs());
 
   useEffect(() => {
-    // Update the document title using the browser API
-    console.log("selected order. " + userSelectedOrder);
-
   }, [userSelectedOrder]);
 
   useEffect(() => {
-    console.log("I am in badminton");
     const fetchDataSequentially = async () => {
       await PlaygroundService.getCourts("65d429328f69db0675dba1d3", "Badminton")
         .then((response) => {
           setCourts(response.data);
           setCurrentCourt(response.data[0])
           setSelectedCourt([response.data[0]]);
-          console.log("Courts ", response.data);
 
           BookingOrderService.getOrdersFor("65d429328f69db0675dba1d3", date.format('YYYY-MM-DD'))
             .then((response) => {
               setOrders(response.data.content);
-              console.log("Orders size  ", response.data.content.length);
             })
             .catch((error) => {
               console.log("Error . ", error);
@@ -56,14 +50,10 @@ const UpcomingEvents = () => {
   }, []);
 
   useEffect(() => {
-    // Update the document title using the browser API
-    console.log("I am in up coming orders");
     setUserSelectedOrder({});
     BookingOrderService.getOrdersFor("65d429328f69db0675dba1d3", date.format('YYYY-MM-DD'))
       .then((response) => {
         setOrders(response.data.content);
-        console.log("Orders size  ", response.data.content.length);
-        console.log("Orders   ", response.data.content);
       })
       .catch((error) => {
         console.log("Error . ", error);
@@ -81,10 +71,6 @@ const UpcomingEvents = () => {
       <div className="upcomingpage">
         <div className="upcomingpage-courts">
           <div className="upcomingpage-courts-tab-header">
-            {/* <CustomCalendar
-              displayDate={date}
-              setDisplayDate={setDisplayDate}
-            /> */}
             <FiveDatePagination currentDate={dayjs()} setDisplayDate={setDisplayDate} />
           </div>
           <div className="upcomingpage-courts-tab">

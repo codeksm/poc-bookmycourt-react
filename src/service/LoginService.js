@@ -2,7 +2,7 @@ import axios from "axios";
 import authHeader from "./AuthHeader";
 
 
-const AUTH_BASE_URL = "http://localhost:8080/api/auth";
+const AUTH_BASE_URL = "http://192.168.1.4:8080/api/auth";
 
 class LoginService {
 

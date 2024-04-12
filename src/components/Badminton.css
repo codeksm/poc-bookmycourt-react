@@ -26,13 +26,6 @@
   height: 25rem;
 }
 
-.badminton-courts {
-  /* width: 39.37rem; */
-  width: 100%;
-  height: auto;
-  /* margin: 0.3rem; */
-}
-
 .ant-tabs {
   height: 3.12rem;
   margin: 0rem;
@@ -120,7 +113,6 @@
     width: 100%;
     height: 50vh;
     border-radius: 0.3rem;
-    margin-bottom: 0.2rem;
     margin-bottom: 0.6rem;
   }
 
@@ -154,7 +146,7 @@
     width: 100%;
     height: 30vh;
     border-radius: 0.3rem;
-    margin-bottom: 0.2rem;
+    margin-bottom: 0.6rem;
   }
 
   .carousel1,
@@ -165,9 +157,48 @@
     height: 30vh;
   }
 
+  .badminton-courts {
+    width: 100%;
+    height: auto;
+  }
+
   .panel2 {
     width: 100%;
     margin-bottom: 0.3rem;
   }
 
+}
+
+/* tablet */
+@media only screen and (min-width: 768px) and (max-width: 768px) {
+  .carousel-container {
+    width: 100%;
+    height: 50vh;
+    border-radius: 0.3rem;
+    margin-bottom: 0.6rem;
+  }
+
+  .carousel1,
+  .carousel2,
+  .carousel3,
+  .carousel4 {
+    width: 100%;
+    height: 50vh;
+  }
+
+  .badminton {
+    display: flex;
+    justify-content: center;
+  }
+
+  .badminton-courts {
+    width: 55%;
+    height: auto;
+  }
+
+  .panel2 {
+    width: 45%;
+    margin-bottom: 0.3rem;
+    margin-left: 2rem;
+  }
 }

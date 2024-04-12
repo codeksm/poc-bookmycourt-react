@@ -19,7 +19,6 @@ const Scheduler = ({ date, booked, reserved, selectedKeys, setSelectedKeys }) =>
   const [flip, setFlip] = useState(false);
 
   useEffect(() => {
-    console.log("Hello from shceduler");
     setFlip(!flip)
   }, [booked]);
 

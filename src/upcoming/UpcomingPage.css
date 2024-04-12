@@ -88,3 +88,23 @@
     height: 20rem;
   }
 }
+
+/* tablet */
+@media only screen and (min-width: 768px) and (max-width: 768px) {
+  .upcomingpage {
+    display: flex;
+    justify-content: center;
+  }
+
+  .upcomingpage-courts {
+    width: 55%;
+    height: auto;
+    margin: 0.3rem;
+  }
+
+  .upcomingpage-displayorder {
+    margin-left: 1.8rem;
+    width: 40%;
+    height: 25rem;
+  }
+}
