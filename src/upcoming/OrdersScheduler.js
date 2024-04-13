@@ -98,7 +98,6 @@ const OrdersScheduler = ({ date, court, orders, setUserSelectedOrder }) => {
                 <div
                   key={event.id}
                   className={getClassName()}
-                  tabindex="0"
                   style={{ ...style, marginLeft: `${marginLeft}px`, width: `${newWidth}px` }}
                   onClick={() => setUserSelectedOrder(event)}
                 >

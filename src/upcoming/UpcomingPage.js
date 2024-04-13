@@ -22,6 +22,7 @@ const UpcomingEvents = () => {
   const [orders, setOrders] = useState([]);
   const [userSelectedOrder, setUserSelectedOrder] = useState({});
   const [date, setDisplayDate] = useState(dayjs());
+  const [refresh, setRefresh] = useState(false);
 
   useEffect(() => {
   }, [userSelectedOrder]);
@@ -58,7 +59,7 @@ const UpcomingEvents = () => {
       .catch((error) => {
         console.log("Error . ", error);
       });
-  }, [date, currentCourt]);
+  }, [refresh, date, currentCourt]);
 
   const onCourtChange = (key) => {
     setCurrentCourt(key);
@@ -86,7 +87,9 @@ const UpcomingEvents = () => {
         </div>
         <div className="upcomingpage-displayorder">
           {userSelectedOrder && userSelectedOrder.id && (
-            <DisplayOrder order={userSelectedOrder} />
+            <DisplayOrder refresh={refresh}
+              setRefresh={setRefresh}
+              order={userSelectedOrder} />
           )}
         </div>
       </div>

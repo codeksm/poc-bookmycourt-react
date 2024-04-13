@@ -7,7 +7,7 @@ import { ExclamationCircleFilled, DownloadOutlined } from '@ant-design/icons';
 import { generatePDF } from '../invoice/InvoiceGenerator';
 
 const { confirm } = Modal;
-const DisplayOrder = ({ order }) => {
+const DisplayOrder = ({ order, refresh, setRefresh }) => {
     const [flip, setFlip] = useState(false);
     const [extendDuration, setExtendDuration] = useState(30);
 
@@ -106,7 +106,7 @@ const DisplayOrder = ({ order }) => {
 
         BookingOrderService.extend(extendData)
             .then((response) => {
-
+                setRefresh(!refresh)
                 Modal.success({
                     title: 'Order Extend Successfull !',
                     content: (
@@ -135,7 +135,7 @@ const DisplayOrder = ({ order }) => {
 
         BookingOrderService.cancel(order.id)
             .then((response) => {
-
+                setRefresh(!refresh)
                 Modal.success({
                     title: 'Order Cancell Successfull !',
                     content: (

@@ -135,8 +135,10 @@ const App = () => {
             ) : (<LoginPage onLogin={handleLogin} />)}
 
           </Content>
+          {isLoggedIn ? (<Footer style={{ position: 'fixed', textAlign: 'center', backgroundColor: '#001529', color: 'white', width: '100%', bottom: 0 }}>SportSea | sportsea.info@gmail.com</Footer>) : (<></>)}
+
         </Layout>
-        <Footer style={{ textAlign: 'center', backgroundColor: '#001529', color: 'white', position: 'fixed', width: '100%', bottom: 0, height: '0.5em' }}>SportSea</Footer>
+
       </Layout>
     </Layout>
 
