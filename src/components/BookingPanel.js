@@ -119,7 +119,7 @@ const BookingPanel = ({ pgId, sport, refresh, setRefresh, displayDate, selectedK
       {contextHolder}
       <div className={`bookingpanel-sport`}>
         <span className="bookingpanel-left">Sport</span>
-        <span className="bookingpanel-right">Badminton</span>
+        <span className="bookingpanel-right">{sport}</span>
       </div>
 
       <div

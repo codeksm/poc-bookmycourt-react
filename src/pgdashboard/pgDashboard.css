@@ -12,6 +12,7 @@
     .pgdashboard-container {
         display: flex;
         height: 50%;
+        margin-bottom: 2rem;
     }
 
     .pgdashboard-details {

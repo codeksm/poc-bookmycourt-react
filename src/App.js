@@ -18,6 +18,8 @@ import {
   NotificationOutlined,
   UserOutlined,
 } from "@ant-design/icons";
+import SportView from "./components/Sport";
+import OnboardPg from "./onboard/OnboardPg";
 
 const { Header, Content, Footer } = Layout;
 
@@ -41,6 +43,8 @@ const items2 = [UserOutlined, LaptopOutlined, NotificationOutlined].map(
 );
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [badminton, setBadminton] = useState('Badminton');
+  const [football, setFootball] = useState('Football');
   const {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
@@ -102,6 +106,10 @@ const App = () => {
                 <span>Analytics</span>
                 <Link to="/analytics" />
               </Menu.Item>
+              <Menu.Item key="5">
+                <span>Onboard</span>
+                <Link to="/onboard" />
+              </Menu.Item>
             </Menu>
           </Header>
         )
@@ -117,7 +125,8 @@ const App = () => {
             style={{
               padding: 24,
               margin: 0,
-              minHeight: 500,
+              height: '44rem',
+              minHeight: '31rem',
               background: colorBgContainer,
               borderRadius: borderRadiusLG,
             }}
@@ -126,16 +135,17 @@ const App = () => {
               <Routes>
                 <Route path="/" element={<LoginPage />} />
                 <Route path="/playground" element={<PgDashboard />}></Route>
-                <Route path="/badminton" element={<Badminton />} />
-                <Route path="/football" element={<Football />} />
+                <Route path="/badminton" element={<SportView sport={badminton} />} />
+                <Route path="/football" element={<SportView sport={football} />} />
                 <Route path="/upcoming" element={<UpcomingEvents />} />
                 <Route path="/history" element={<OrdersTable />} />
                 <Route path="/analytics" element={<Analytics />} />
+                <Route path="/onboard" element={<OnboardPg />} />
               </Routes>
             ) : (<LoginPage onLogin={handleLogin} />)}
 
           </Content>
-          {isLoggedIn ? (<Footer style={{ position: 'fixed', textAlign: 'center', backgroundColor: '#001529', color: 'white', width: '100%', bottom: 0 }}>SportSea | sportsea.info@gmail.com</Footer>) : (<></>)}
+          {isLoggedIn ? (<Footer style={{ height: '0.1rem', position: 'fixed', textAlign: 'center', backgroundColor: '#001529', color: 'white', width: '100%', bottom: 0 }}>SportSea | sportsea.info@gmail.com</Footer>) : (<></>)}
 
         </Layout>
 

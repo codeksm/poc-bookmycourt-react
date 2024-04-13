@@ -17,7 +17,7 @@ import FiveDatePagination from "../invoice/PaginatedCalendar";
 const { TabPane } = Tabs;
 uuidv4();
 
-const Badminton = () => {
+const SportView = ({ sport }) => {
   const navigate = useNavigate();
   const [messageApi, contextHolder] = message.useMessage();
   const [selectedSlots, setSelectedSlots] = useState(new Set());
@@ -29,7 +29,7 @@ const Badminton = () => {
   const [displayDate, setDisplayDate] = useState(dayjs());
   const [refresh, setRefresh] = useState(false);
   const pgId = '65d429328f69db0675dba1d3';
-  const sport = 'Badminton'
+  // let sport = 'Badminton'
 
   const contentStyle = {
     width: '100%', // Ensure the image fills the full width of its parent container
@@ -37,28 +37,8 @@ const Badminton = () => {
     objectFit: 'cover',
   };
 
-
-  const slides = [
-    {
-      key: uuidv4(),
-      content: <img src="https://picsum.photos/800/300/?random" alt="1" />,
-    },
-    {
-      key: uuidv4(),
-      content: <img src="https://picsum.photos/800/301/?random" alt="2" />,
-    },
-    {
-      key: uuidv4(),
-      content: <img src="https://picsum.photos/800/302/?random" alt="3" />,
-    },
-    {
-      key: uuidv4(),
-      content: <img src="https://picsum.photos/800/303/?random" alt="4" />,
-    },
-  ];
-
   useEffect(() => {
-    console.log("I am in badminton");
+    console.log("I am in " + sport);
     const fetchDataSequentially = async () => {
       await PlaygroundService.getCourts(pgId, sport)
         .then((response) => {
@@ -97,11 +77,6 @@ const Badminton = () => {
         });
       });
   }, [refresh, displayDate, currentCourt]);
-
-  const onClick = () => {
-    //setSelectedCard(card);
-    navigate("/playground");
-  };
 
   const callback = function (index) {
     console.log("callback", index);
@@ -150,7 +125,7 @@ const Badminton = () => {
               onClick: () => handleBreadcrumbClick('Aditya Sports Arena'),
             },
             {
-              title: 'Badminton',
+              title: sport,
             },
           ]}
         />
@@ -232,4 +207,4 @@ const Badminton = () => {
   );
 };
 
-export default Badminton;
+export default SportView;
