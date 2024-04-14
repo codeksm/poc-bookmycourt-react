@@ -51,11 +51,11 @@
 }
 
 .label {
-    font-weight: normal;
+    font-weight: 400;
 }
 
 .value {
-    font-weight: lighter;
+    font-weight: normal;
     float: right;
     margin-right: 0.6rem;
 }

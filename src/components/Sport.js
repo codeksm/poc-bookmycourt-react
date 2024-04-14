@@ -22,7 +22,7 @@ const SportView = ({ sport }) => {
   const [messageApi, contextHolder] = message.useMessage();
   const [selectedSlots, setSelectedSlots] = useState(new Set());
   const [selectedCourt, setSelectedCourt] = useState([]);
-  const [currentCourt, setCurrentCourt] = useState("1");
+  const [currentCourt, setCurrentCourt] = useState("c1");
   const [courts, setCourts] = useState([]);
   const [booked, setBookedSlots] = useState([]);
   const [reserved, setReservedSlots] = useState([]);
@@ -109,7 +109,7 @@ const SportView = ({ sport }) => {
   };
 
   const handleBreadcrumbClick = (title) => {
-    if (title === 'Aditya Sports Arena') {
+    if (title === 'ABC Sports Zone') {
       navigate('/playground');
     }
   };
@@ -121,8 +121,8 @@ const SportView = ({ sport }) => {
         <Breadcrumb
           items={[
             {
-              title: 'Aditya Sports Arena',
-              onClick: () => handleBreadcrumbClick('Aditya Sports Arena'),
+              title: 'ABC Sports Zone',
+              onClick: () => handleBreadcrumbClick('ABC Sports Zone'),
             },
             {
               title: sport,

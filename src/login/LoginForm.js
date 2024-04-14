@@ -16,7 +16,7 @@ const LoginForm = ({ onLogin }) => {
             password: values.password
         };
 
-        console.log(JSON.stringify(requestBody));
+        // console.log(JSON.stringify(requestBody));
         LoginService.authenticate(requestBody)
             .then((response) => {
                 // Store the token in local storage

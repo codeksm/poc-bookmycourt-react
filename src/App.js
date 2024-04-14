@@ -119,14 +119,13 @@ const App = () => {
         <Layout
           style={{
             padding: "0 0 0",
+            minHeight: "100vh"
           }}
         >
           <Content
             style={{
               padding: 24,
               margin: 0,
-              height: '44rem',
-              minHeight: '31rem',
               background: colorBgContainer,
               borderRadius: borderRadiusLG,
             }}
@@ -142,10 +141,14 @@ const App = () => {
                 <Route path="/analytics" element={<Analytics />} />
                 <Route path="/onboard" element={<OnboardPg />} />
               </Routes>
-            ) : (<LoginPage onLogin={handleLogin} />)}
+            ) : (
+              <div className="login-wrapper" >
+                <LoginPage onLogin={handleLogin} />
+              </div>
+            )}
 
           </Content>
-          {isLoggedIn ? (<Footer style={{ height: '0.1rem', position: 'fixed', textAlign: 'center', backgroundColor: '#001529', color: 'white', width: '100%', bottom: 0 }}>SportSea | sportsea.info@gmail.com</Footer>) : (<></>)}
+          {isLoggedIn ? (<Footer style={{ textAlign: 'center' }} >SportSea | sportsea.info@gmail.com</Footer>) : (<></>)}
 
         </Layout>
 

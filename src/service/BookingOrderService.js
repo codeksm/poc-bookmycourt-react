@@ -4,7 +4,7 @@ import authHeader from "./AuthHeader";
 
 
 // const ORDERS_BASE_URL = "http://localhost:8080/api/orders";
-const ORDERS_BASE_URL = "http://192.168.1.4:8080/api/orders";
+const ORDERS_BASE_URL = "http://192.168.249.221:8080/api/orders";
 
 class BookingOrderService {
 

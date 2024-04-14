@@ -43,7 +43,7 @@ const BookingPanel = ({ pgId, sport, refresh, setRefresh, displayDate, selectedK
       slotIds: slots,
       date: displayDate.format("YYYY-MM-DD"),
       userId: '',
-      pgName: 'Aditya Sports Arena',
+      pgName: 'ABC Sports Zone',
       totalAmt: '300.00',
       advancePaid: '0.00',
       balanceAmt: '300.00',
