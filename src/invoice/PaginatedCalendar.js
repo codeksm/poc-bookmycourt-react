@@ -65,7 +65,7 @@ const FiveDatePagination = ({ currentDate, setDisplayDate }) => {
         <>
             <div className="date-dispaly">
                 <span className="currentDate">
-                    {displayLocal.format("DD MMMM YYYY")}
+                    {displayLocal.format("DD MMMM YYYY")}  , Badminton
                 </span>
                 <span className="today" onClick={() => { }}>
                     Today

@@ -1,7 +1,9 @@
 import axios from "axios";
 import authHeader from "./AuthHeader";
+import { IP_ADDRESS } from "./ipaddress";
 
-const RESERVESLOT_BASE_URL = "http://192.168.249.221:8080/api/email";
+
+const RESERVESLOT_BASE_URL = `http://${IP_ADDRESS}:8080/api/email`;
 
 class EmailService {
 

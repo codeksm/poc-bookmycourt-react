@@ -106,6 +106,23 @@
   cursor: pointer;
 }
 
+.breadcrumb .ant-breadcrumb-separator {
+  margin: 0 6px;
+  color: #999;
+}
+
+/* Styling the active breadcrumb link */
+.breadcrumb .ant-breadcrumb-item:last-child a {
+  color: #1890ff !important;
+  /* You can add more styles as needed */
+}
+
+/* Styling for hover effects */
+.breadcrumb .ant-breadcrumb-item a:hover {
+  text-decoration: underline;
+  /* You can add more styles as needed */
+}
+
 
 /* laptop */
 @media only screen and (min-width : 768px) {

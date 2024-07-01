@@ -3,6 +3,14 @@
     height: 8rem;
 }
 
+.image {
+    max-width: 100%;
+    /* Set the maximum width of the image to 100% of the container */
+    max-height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
 .pg-details-title {
     height: 2rem;
     width: 100%;

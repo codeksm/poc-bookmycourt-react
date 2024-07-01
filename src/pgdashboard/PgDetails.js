@@ -2,6 +2,7 @@ import React from 'react';
 import { Row, Col, Card } from 'antd';
 import './PgDetails.css';
 import MapContainer from '../map/MapContainer';
+import imageSrc from '../images/googlemap.png';
 
 const { Meta } = Card;
 
@@ -15,7 +16,8 @@ const PgDetails = ({ pgData }) => {
             </div>
             <div className="pg-details-body" >
                 <div className="pg-details-map" >
-                    <MapContainer />
+                    {/* <MapContainer /> */}
+                    <img className='image' src={imageSrc} alt="Image Description"></img>
                 </div>
                 <div className="pg-details-text" >
                     <p className='text'>Phone: {pgData.phone}</p>

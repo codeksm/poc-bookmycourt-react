@@ -85,6 +85,14 @@
     margin-left: 0.6rem;
 }
 
+.sporttype {
+    text-align: center;
+    justify-content: center;
+    font-size: large;
+    margin: 0.3rem;
+    width: 100px;
+}
+
 .today {
     text-align: center;
     justify-content: center;

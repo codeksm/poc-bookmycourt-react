@@ -148,7 +148,7 @@ const App = () => {
             )}
 
           </Content>
-          {isLoggedIn ? (<Footer style={{ textAlign: 'center' }} >SportSea | sportsea.info@gmail.com</Footer>) : (<></>)}
+          {isLoggedIn ? (<Footer style={{ textAlign: 'center' }} > SportSea | sportsea.info@gmail.com</Footer>) : (<></>)}
 
         </Layout>
 
